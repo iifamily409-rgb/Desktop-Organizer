@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desktop Organizer - Smart Windows File Organizer</title>
+<meta name="description" content="Desktop Organizer automatically organizes files, detects duplicates, supports AI-powered file management, and keeps your Windows desktop clean.">
+<meta name="author" content="Suleman Alam">
+<meta name="theme-color" content="#06070d">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://iifamily409-rgb.github.io/Desktop-Organizer/">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Desktop Organizer">
+<meta property="og:title" content="Desktop Organizer - Smart Windows File Organizer">
+<meta property="og:description" content="Automatically organizes files, detects duplicates, supports AI-powered file management, and keeps your Windows desktop clean.">
+<meta property="og:url" content="https://iifamily409-rgb.github.io/Desktop-Organizer/">
+<meta property="og:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Desktop Organizer - Smart Windows File Organizer">
+<meta name="twitter:description" content="A modern Windows desktop organizer with real-time monitoring, AI assistance, duplicate cleanup and system tray support.">
+<meta name="twitter:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
+
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="./style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Desktop Organizer",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Windows 10, Windows 11",
+  "softwareVersion": "1.0.0",
+  "url": "https://iifamily409-rgb.github.io/Desktop-Organizer/",
+  "description": "Desktop Organizer automatically organizes files, detects duplicates, supports AI-powered file management, and keeps your Windows desktop clean.",
+  "author": { "@type": "Person", "name": "Suleman Alam" },
+  "license": "https://opensource.org/licenses/MIT",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="#home" aria-label="Desktop Organizer home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.1c.66 0 1.28.26 1.75.72L11.9 7.3c.47.46 1.09.72 1.75.72h3.9A2.5 2.5 0 0 1 20 10.5v6A2.5 2.5 0 0 1 17.5 19h-12A2.5 2.5 0 0 1 3 16.5v-9Z"/>
+          <path d="M8.5 13.5h7M12 10.5v6"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Desktop Organizer</span>
+        <span class="brand-sub">for Windows 10 &amp; 11</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="#changelog">Changelog</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-mobile-actions">
+        <a class="btn btn-primary btn-block" href="./downloads/Desktop%20Organizer%20Setup.exe" download="Desktop Organizer Setup.exe">Download for Windows</a>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-ghost btn-sm github-btn" href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.94-.01 2.21 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a class="btn btn-primary btn-sm" href="#download">Download</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-bg" aria-hidden="true">
+      <span class="orb orb-a"></span>
+      <span class="orb orb-b"></span>
+      <span class="orb orb-c"></span>
+      <span class="grid-overlay"></span>
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <p class="hero-badge reveal">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          v1.0.0 now available for Windows
+        </p>
+
+        <h1 class="hero-title reveal delay-1">
+          Organize Your Desktop
+          <span class="gradient-text">Automatically</span>
+        </h1>
+
+        <p class="hero-subtitle reveal delay-2">
+          A modern Windows desktop organizer with real-time monitoring, AI assistance,
+          duplicate cleanup, automatic file organization, and system tray support.
+        </p>
+
+        <div class="hero-actions reveal delay-3">
+          <a class="btn btn-primary btn-lg" href="./downloads/Desktop%20Organizer%20Setup.exe" download="Desktop Organizer Setup.exe">
+            <svg class="win-glyph" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M0 1.9 6.5.84v6.7H0V1.9Zm0 12.2 6.5 1.06V8.46H0v5.64ZM7.2 8.46 16 7.24v7.9l-8.8-1.24V8.46Zm0-7.6L16 0v6.3l-8.8.15V.86Z"/></svg>
+            Download for Windows
+          </a>
+          <a class="btn btn-secondary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M0 8a8 8 0 0 1 8-8 8 8 0 0 1 8 8 8 8 0 0 1-5.28 7.59c-.39.07-.54-.17-.54-.37v-1.35c2.18.46 2.64-1.04 2.64-1.04.36-.9.87-1.15.87-1.15.71-.48-.05-.47-.05-.47.79.05 1.2.8 1.2.8.69 1.19 1.82.85 2.26.65.07-.5.27-.85.49-1.05-1.72-.2-3.53-.86-3.53-3.83 0-.85.3-1.54.8-2.08-.08-.2-.35-.99.07-2.06 0 0 .65-.21 2.14.79a7.5 7.5 0 0 1 3.9 0c1.48-1 2.13-.79 2.13-.79.43 1.07.16 1.86.08 2.06.5.54.8 1.23.8 2.08 0 2.98-1.82 3.63-3.55 3.82.28.24.53.72.53 1.45v2.15c0 .2.13.45.54.37A8 8 0 0 1 0 8Z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+
+        <dl class="hero-stats reveal delay-4">
+          <div><dt>Real-time</dt><dd>File monitoring across every folder you watch</dd></div>
+          <div><dt>100% local</dt><dd>Organizing engine runs on your machine</dd></div>
+          <div><dt>Undo-safe</dt><dd>Every move restorable from history</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-visual reveal delay-2">
+        <div class="app-window" data-tilt>
+          <div class="app-chrome">
+            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="app-title">Desktop Organizer — Dashboard</span>
+            <span class="app-chip">Auto-organize: On</span>
+          </div>
+
+          <div class="app-body" aria-hidden="true">
+            <aside class="app-side">
+              <span class="side-item is-active">Dashboard</span>
+              <span class="side-item">File Manager</span>
+              <span class="side-item">Duplicate Finder</span>
+              <span class="side-item">AI Assistant</span>
+              <span class="side-item">History</span>
+              <span class="side-item">Settings</span>
+            </aside>
+
+            <div class="app-main">
+              <div class="app-tiles">
+                <div class="tile"><span class="tile-label">Files organized</span><strong class="tile-value" data-count="1284">0</strong></div>
+                <div class="tile"><span class="tile-label">Duplicates found</span><strong class="tile-value" data-count="37">0</strong></div>
+                <div class="tile"><span class="tile-label">Space freed</span><strong class="tile-value" data-count="2">0</strong><span class="tile-unit">GB</span></div>
+              </div>
+
+              <div class="app-panel">
+                <div class="panel-head">
+                  <span>Live activity</span>
+                  <span class="panel-sub"><i class="live-dot"></i> Watching 3 folders</span>
+                </div>
+                <ul class="activity-list" id="activityList"></ul>
+              </div>
+
+              <div class="app-progress">
+                <div class="progress-head"><span>Organizing Desktop</span><span class="muted">Images · Documents · Videos · Music</span></div>
+                <div class="bar"><span class="bar-fill"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="floating-card float-a" aria-hidden="true">
+          <span class="fc-icon">✓</span>
+          <div><strong>42 files moved</strong><small>into Documents / Invoices</small></div>
+        </div>
+        <div class="floating-card float-b" aria-hidden="true">
+          <span class="fc-icon fc-purple">AI</span>
+          <div><strong>“Sort my downloads by type”</strong><small>Done in 1.2s</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="section" id="features">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">Features</p>
+        <h2>Everything a clean desktop needs</h2>
+        <p class="section-sub">
+          Purpose-built tools that work together in the background — monitor, organize, deduplicate,
+          and undo, without ever leaving your workflow.
+        </p>
+      </header>
+
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3.5l2.2-6 3.3 12 2.7-8.4 1.8 4.4H22"/></svg>
+          </span>
+          <h3>Real-Time Monitoring</h3>
+          <p>Automatically organize new files within seconds.</p>
+          <ul class="feature-meta"><li>Folder watch list</li><li>Debounce-safe writes</li></ul>
+        </article>
+
+        <article class="feature-card reveal delay-1">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="12" height="12" rx="2.5"/><path d="M15 15v3.5A2.5 2.5 0 0 1 12.5 21H6a3 3 0 0 1-3-3v-6.5A2.5 2.5 0 0 1 5.5 9H9"/></svg>
+          </span>
+          <h3>Duplicate Finder</h3>
+          <p>Detect and safely remove duplicate files.</p>
+          <ul class="feature-meta"><li>Content hashing</li><li>Review before delete</li></ul>
+        </article>
+
+        <article class="feature-card reveal delay-2">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5l1.6 4.1 4.1 1.6-4.1 1.6L12 15l-1.6-4.2L6.3 9.2l4.1-1.6L12 3.5Z"/><path d="M18.5 15l.9 2.2 2.2.9-2.2.9-.9 2.2-.9-2.2-2.2-.9 2.2-.9.9-2.2Z"/></svg>
+          </span>
+          <h3>AI Assistant</h3>
+          <p>Manage files using natural language.</p>
+          <ul class="feature-meta"><li>Bring your own provider</li><li>Preview before apply</li></ul>
+        </article>
+
+        <article class="feature-card reveal">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="11" rx="2.5"/><path d="M7 19.5h10M12 15.5v4"/></svg>
+          </span>
+          <h3>System Tray Support</h3>
+          <p>Runs silently in the background.</p>
+          <ul class="feature-meta"><li>Starts with Windows</li><li>Zero-noise automation</li></ul>
+        </article>
+
+        <article class="feature-card reveal delay-1">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="2"/></svg>
+          </span>
+          <h3>Automatic Categorization</h3>
+          <p>Images, Videos, Documents, Music and more.</p>
+          <ul class="feature-meta"><li>Extension rules</li><li>Custom destinations</li></ul>
+        </article>
+
+        <article class="feature-card reveal delay-2">
+          <span class="feature-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9.5A9 9 0 1 1 4 15"/><path d="M3 4.5v5h5"/><path d="M12 8.5v4l2.8 1.7"/></svg>
+          </span>
+          <h3>Organization History</h3>
+          <p>Undo any operation anytime.</p>
+          <ul class="feature-meta"><li>Per-operation log</li><li>Full restore path</li></ul>
+        </article>
+      </div>
+
+      <ul class="chip-row reveal" aria-label="Also included">
+        <li>Startup support</li>
+        <li>Background monitoring</li>
+        <li>Folder history</li>
+        <li>Undo support</li>
+        <li>Duplicate cleanup</li>
+        <li>AI integration</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SCREENSHOTS ============ -->
+  <section class="section section-alt" id="screenshots">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">Screenshots</p>
+        <h2>A calm, focused interface</h2>
+        <p class="section-sub">
+          Every screen is built around one job: show what happened to your files, and let you change it back.
+        </p>
+      </header>
+
+      <div class="shot-grid">
+        <figure class="shot-card reveal">
+          <div class="shot-frame" aria-hidden="true">
+            <div class="shot-bar"><i></i><i></i><i></i><span>Dashboard</span></div>
+            <div class="shot-body shot-dashboard">
+              <div class="mini-tiles"><span></span><span></span><span></span><span></span></div>
+              <div class="mini-panel tall"><div class="mini-row w-70"></div><div class="mini-row w-90"></div><div class="mini-row w-50"></div><div class="mini-row w-80"></div></div>
+              <div class="mini-bars"><i style="height:38%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:82%"></i><i style="height:56%"></i><i style="height:72%"></i></div>
+            </div>
+          </div>
+          <figcaption><strong>Dashboard</strong><span>Live activity, watched folders and totals at a glance.</span></figcaption>
+        </figure>
+
+        <figure class="shot-card reveal delay-1">
+          <div class="shot-frame" aria-hidden="true">
+            <div class="shot-bar"><i></i><i></i><i></i><span>Duplicate Cleaner</span></div>
+            <div class="shot-body shot-list">
+              <div class="mini-head"><span>Group</span><span>Size</span><span>Action</span></div>
+              <div class="mini-row w-90"></div>
+              <div class="mini-row w-70"></div>
+              <div class="mini-row w-80 is-accent"></div>
+              <div class="mini-row w-60"></div>
+              <div class="mini-cta">Review 12 duplicates</div>
+            </div>
+          </div>
+          <figcaption><strong>Duplicate Cleaner</strong><span>Hash-matched groups with a safe review step before deletion.</span></figcaption>
+        </figure>
+
+        <figure class="shot-card reveal delay-2">
+          <div class="shot-frame" aria-hidden="true">
+            <div class="shot-bar"><i></i><i></i><i></i><span>File Manager</span></div>
+            <div class="shot-body shot-files">
+              <div class="file-tile"><i></i><span>Images</span></div>
+              <div class="file-tile"><i></i><span>Videos</span></div>
+              <div class="file-tile"><i></i><span>Documents</span></div>
+              <div class="file-tile"><i></i><span>Music</span></div>
+              <div class="file-tile"><i></i><span>Archives</span></div>
+              <div class="file-tile"><i></i><span>Installers</span></div>
+            </div>
+          </div>
+          <figcaption><strong>File Manager</strong><span>Browse categories and move files wherever you want them.</span></figcaption>
+        </figure>
+
+        <figure class="shot-card reveal">
+          <div class="shot-frame" aria-hidden="true">
+            <div class="shot-bar"><i></i><i></i><i></i><span>AI Assistant</span></div>
+            <div class="shot-body shot-chat">
+              <div class="bubble in">Move all Downloads PDFs to Documents.</div>
+              <div class="bubble out">Found 18 files. Apply this plan?</div>
+              <div class="bubble done">Done — 18 files moved. Undo in History.</div>
+              <div class="chat-input">Ask Desktop Organizer…</div>
+            </div>
+          </div>
+          <figcaption><strong>AI Assistant</strong><span>Plain-language file operations with preview and undo.</span></figcaption>
+        </figure>
+
+        <figure class="shot-card reveal delay-1">
+          <div class="shot-frame" aria-hidden="true">
+            <div class="shot-bar"><i></i><i></i><i></i><span>Settings</span></div>
+            <div class="shot-body shot-settings">
+              <div class="set-row"><span>Real-time monitoring</span><b class="toggle on"></b></div>
+              <div class="set-row"><span>Start with Windows</span><b class="toggle on"></b></div>
+              <div class="set-row"><span>Run in system tray</span><b class="toggle on"></b></div>
+              <div class="set-row"><span>AI provider</span><b class="select">OpenAI compatible</b></div>
+            </div>
+          </div>
+          <figcaption><strong>Settings</strong><span>Watch folders, categories, tray behavior and AI provider.</span></figcaption>
+        </figure>
+
+        <figure class="shot-card reveal delay-2">
+          <div class="shot-frame" aria-hidden="true">
+            <div class="shot-bar"><i></i><i></i><i></i><span>Organization History</span></div>
+            <div class="shot-body shot-history">
+              <div class="hist-item"><i></i><div class="mini-row w-70"></div><b>Undo</b></div>
+              <div class="hist-item"><i></i><div class="mini-row w-60"></div><b>Undo</b></div>
+              <div class="hist-item"><i></i><div class="mini-row w-80"></div><b>Undo</b></div>
+            </div>
+          </div>
+          <figcaption><strong>Organization History</strong><span>Every operation logged, with one-click restore.</span></figcaption>
+        </figure>
+      </div>
+
+      <p class="shot-note reveal">Screens above are illustrative interface previews.</p>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">How it works</p>
+        <h2>From install to a clean desktop in four steps</h2>
+      </header>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-num">01</span>
+          <div class="step-body">
+            <h3>Install Desktop Organizer</h3>
+            <p>Run the Windows installer. The app, its services and the organizer engine are bundled — no extra runtime to set up.</p>
+          </div>
+        </li>
+        <li class="step reveal delay-1">
+          <span class="step-num">02</span>
+          <div class="step-body">
+            <h3>Select monitored folders</h3>
+            <p>Add Desktop, Downloads or any directory you want watched. Each folder keeps its own category rules.</p>
+          </div>
+        </li>
+        <li class="step reveal delay-2">
+          <span class="step-num">03</span>
+          <div class="step-body">
+            <h3>Enable auto organize</h3>
+            <p>Turn on real-time monitoring and new files are categorized within seconds — or run a one-time cleanup pass instead.</p>
+          </div>
+        </li>
+        <li class="step reveal delay-3">
+          <span class="step-num">04</span>
+          <div class="step-body">
+            <h3>Enjoy a clean workspace</h3>
+            <p>Everything is recorded in history, so any move, categorization or cleanup can be undone at any time.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ DOWNLOAD ============ -->
+  <section class="section section-alt" id="download">
+    <div class="container">
+      <div class="download-panel reveal">
+        <div class="download-copy">
+          <p class="eyebrow">Download</p>
+          <h2>Get Desktop Organizer <span class="version-chip">v1.0.0</span></h2>
+          <p class="section-sub">
+            Free, Windows-native installer. Runs fully offline for monitoring, organizing and duplicate cleanup.
+          </p>
+
+          <ul class="requirements">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+              <span><strong>Windows 10</strong> (64-bit)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+              <span><strong>Windows 11</strong> (64-bit)</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+              <span>No additional runtime required</span>
+            </li>
+          </ul>
+
+          <div class="download-actions">
+            <a class="btn btn-primary btn-lg" href="./downloads/Desktop%20Organizer%20Setup.exe" download="Desktop Organizer Setup.exe">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M4.5 19.5h15"/></svg>
+              Download Setup
+            </a>
+            <a class="btn btn-secondary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases" target="_blank" rel="noopener">GitHub Releases</a>
+          </div>
+          <p class="download-note">
+            <code>Desktop Organizer Setup.exe</code> · 98.1 MB · SHA-256 <code>72AAD61C…99C0B</code><br>
+            The build is not code-signed yet, so SmartScreen may show a warning on first run — choose
+            <strong>More info → Run anyway</strong>.
+          </p>
+        </div>
+
+        <aside class="download-card" aria-label="Release information">
+          <div class="dc-head">
+            <span>Release</span>
+            <span class="dc-badge">Stable</span>
+          </div>
+          <p class="dc-version">v1.0.0</p>
+          <dl class="dc-list">
+            <div><dt>Platform</dt><dd>Windows x64</dd></div>
+            <div><dt>Requires</dt><dd>Windows 10 / 11</dd></div>
+            <div><dt>Installer</dt><dd>NSIS Setup · 98.1 MB</dd></div>
+            <div><dt>Uninstall</dt><dd>Apps &amp; features</dd></div>
+            <div><dt>License</dt><dd>MIT</dd></div>
+            <div><dt>Telemetry</dt><dd>None</dd></div>
+          </dl>
+          <a class="dc-link" href="#changelog">Read the release notes
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg>
+          </a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHANGELOG ============ -->
+  <section class="section" id="changelog">
+    <div class="container narrow">
+      <header class="section-head reveal">
+        <p class="eyebrow">Changelog</p>
+        <h2>Release notes</h2>
+      </header>
+
+      <article class="release reveal">
+        <div class="release-head">
+          <h3>Version 1.0.0</h3>
+          <div class="release-tags"><span class="tag tag-latest">Latest</span><span class="tag">Initial public release</span></div>
+        </div>
+        <p class="release-lead">Features</p>
+        <ul class="release-list">
+          <li>Real-time file organization</li>
+          <li>Duplicate cleanup</li>
+          <li>AI integration</li>
+          <li>System tray mode</li>
+          <li>Startup support</li>
+          <li>Background monitoring</li>
+          <li>Folder history</li>
+          <li>Undo support</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section section-alt" id="faq">
+    <div class="container narrow">
+      <header class="section-head reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2>Frequently asked questions</h2>
+      </header>
+
+      <div class="faq-list reveal" id="faqList">
+        <div class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-1" id="faq-1-btn"><span>Is Desktop Organizer free?</span><i class="faq-icon" aria-hidden="true"></i></button></h3>
+          <div class="faq-a" id="faq-1" role="region" aria-labelledby="faq-1-btn">
+            <div class="faq-a-inner">
+              <p>Yes. Desktop Organizer is free to download and use on both Windows 10 and Windows 11, with all core features — monitoring, organizing, duplicate cleanup, history and undo — included. The project is distributed under the MIT license.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn"><span>Does it work offline?</span><i class="faq-icon" aria-hidden="true"></i></button></h3>
+          <div class="faq-a" id="faq-2" role="region" aria-labelledby="faq-2-btn">
+            <div class="faq-a-inner">
+              <p>Fully. Real-time monitoring, categorization, duplicate detection, history and undo all run locally with no internet connection required. Only the optional AI assistant needs network access — and that depends on the provider you configure.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn"><span>Can I undo file moves?</span><i class="faq-icon" aria-hidden="true"></i></button></h3>
+          <div class="faq-a" id="faq-3" role="region" aria-labelledby="faq-3-btn">
+            <div class="faq-a-inner">
+              <p>Yes. Every organizing run is recorded in Organization History with the original and destination paths for each file. Open the history entry and choose Undo to restore everything to where it started.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn"><span>Does it support AI providers?</span><i class="faq-icon" aria-hidden="true"></i></button></h3>
+          <div class="faq-a" id="faq-4" role="region" aria-labelledby="faq-4-btn">
+            <div class="faq-a-inner">
+              <p>Desktop Organizer is provider-neutral: point the AI assistant at an OpenAI-compatible endpoint or a local model server, and it translates plain-language requests into file operations. Proposed actions are shown as a preview before anything touches your files.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <h3><button class="faq-q" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn"><span>Is my data uploaded anywhere?</span><i class="faq-icon" aria-hidden="true"></i></button></h3>
+          <div class="faq-a" id="faq-5" role="region" aria-labelledby="faq-5-btn">
+            <div class="faq-a-inner">
+              <p>No. There is no telemetry and no cloud sync — your files, folder structure and history database stay on your machine. If you enable the AI assistant, only the request text you send goes to the provider you configured, never your file contents unless you explicitly include them.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-inner reveal">
+        <h2>Stop scrolling past your own desktop icons.</h2>
+        <p>Install Desktop Organizer once and let it keep every monitored folder tidy from then on.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-lg" href="./downloads/Desktop%20Organizer%20Setup.exe" download="Desktop Organizer Setup.exe">Download for Windows</a>
+          <a class="btn btn-secondary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">Star on GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="#home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.1c.66 0 1.28.26 1.75.72L11.9 7.3c.47.46 1.09.72 1.75.72h3.9A2.5 2.5 0 0 1 20 10.5v6A2.5 2.5 0 0 1 17.5 19h-12A2.5 2.5 0 0 1 3 16.5v-9Z"/>
+            <path d="M8.5 13.5h7M12 10.5v6"/>
+          </svg>
+        </span>
+        <span class="brand-text"><span class="brand-name">Desktop Organizer</span></span>
+      </a>
+      <p>A modern Windows desktop organizer that keeps files categorized, duplicates cleaned, and your workspace calm.</p>
+      <p class="developer">Developer: <a href="https://github.com/iifamily409-rgb" target="_blank" rel="noopener">Suleman Alam</a></p>
+    </div>
+
+    <nav class="footer-col" aria-label="Product">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#screenshots">Screenshots</a></li>
+        <li><a href="#how-it-works">How it works</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Resources">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="./downloads/Desktop%20Organizer%20Setup.exe" download="Desktop Organizer Setup.exe">Download</a></li>
+        <li><a href="#changelog">Release Notes</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">Documentation</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Support">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/issues" target="_blank" rel="noopener">Report an issue</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases" target="_blank" rel="noopener">Releases</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© 2026 Desktop Organizer. All rights reserved.</p>
+    <p class="footer-meta"><span>Built for Windows 10 &amp; 11</span><span class="sep">·</span><span>MIT License</span></p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5.5 11.5 6.5-6.5 6.5 6.5"/></svg>
+</button>
+
+<script src="./script.js" defer></script>
+</body>
+</html>
