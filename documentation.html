@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Documentation - Desktop Organizer</title>
+<meta name="description" content="Desktop Organizer documentation: install the Windows setup, run your first organization pass, watch Downloads safely, clean duplicates, configure the AI assistant, adjust settings and troubleshoot common issues.">
+<meta name="author" content="Suleman Alam">
+<meta name="theme-color" content="#06070d">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://iifamily409-rgb.github.io/Desktop-Organizer/documentation.html">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Desktop Organizer">
+<meta property="og:title" content="Desktop Organizer Documentation">
+<meta property="og:description" content="Installation, first start, organization, duplicate cleanup, AI features, settings and troubleshooting for Desktop Organizer on Windows 10 and 11.">
+<meta property="og:url" content="https://iifamily409-rgb.github.io/Desktop-Organizer/documentation.html">
+<meta property="og:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Desktop Organizer Documentation">
+<meta name="twitter:description" content="Installation, first start, organization, duplicate cleanup, AI features, settings and troubleshooting.">
+<meta name="twitter:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
+
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="./index.html" aria-label="Desktop Organizer home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.1c.66 0 1.28.26 1.75.72L11.9 7.3c.47.46 1.09.72 1.75.72h3.9A2.5 2.5 0 0 1 20 10.5v6A2.5 2.5 0 0 1 17.5 19h-12A2.5 2.5 0 0 1 3 16.5v-9Z"/>
+          <path d="M8.5 13.5h7M12 10.5v6"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Desktop Organizer</span>
+        <span class="brand-sub">for Windows 10 &amp; 11</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="./index.html#features">Features</a></li>
+        <li><a href="./index.html#screenshots">Screenshots</a></li>
+        <li><a href="./index.html#how-it-works">How it works</a></li>
+        <li><a href="./index.html#download">Download</a></li>
+        <li><a href="./index.html#changelog">Changelog</a></li>
+        <li><a href="./index.html#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-mobile-actions">
+        <a class="btn btn-primary btn-block" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download for Windows</a>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-ghost btn-sm github-btn" href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.82 3.63-3.55 3.82.28.24.53.72.53 1.45v2.15c0 .2.13.45.54.37A8 8 0 0 1 0 8Z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Documentation</p>
+      <h1 class="page-title">How Desktop Organizer works</h1>
+      <p class="page-lead">Everything you need to install the app, point it at the right folders and understand what it does to your files. Written for v1.0.1 on Windows 10 and Windows 11.</p>
+      <div class="page-stamp">
+        <span class="tag">Version 1.0.1</span>
+        <span class="tag">Windows 10 / 11 · x64</span>
+        <span class="tag">Runs offline</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-body">
+    <div class="container doc-layout">
+
+      <aside class="doc-toc" aria-label="On this page">
+        <h4>Contents</h4>
+        <ol>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#first-start">First start</a></li>
+          <li><a href="#desktop-organization">Desktop organization</a></li>
+          <li><a href="#downloads-organization">Downloads organization</a></li>
+          <li><a href="#duplicate-cleaner">Duplicate cleaner</a></li>
+          <li><a href="#ai-features">AI features</a></li>
+          <li><a href="#settings">Settings</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ol>
+      </aside>
+
+      <div class="doc-content prose">
+
+        <section class="doc-section" id="installation">
+          <h2>Installation</h2>
+          <p>Desktop Organizer ships as a single Windows installer:
+            <code>Desktop-Organizer-Setup-v1.0.1.exe</code> (98.2 MB). It bundles the desktop shell and
+            the local engine, so you do not need to install Python, Node or a database separately.</p>
+          <ol>
+            <li>Download the setup from the <a href="./index.html#download">download section</a> or the
+              <a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/tag/v1.0.1" target="_blank" rel="noopener">v1.0.1 release</a>.</li>
+            <li>Run the installer and choose the destination folder — the default per-user location needs no administrator rights.</li>
+            <li>Finish the wizard. A desktop and Start Menu shortcut are created for you.</li>
+          </ol>
+          <div class="callout callout-warn">
+            <h3>SmartScreen on first run</h3>
+            <p>The build is not code-signed yet, so Windows may show “Windows protected your PC”.
+              Choose <strong>More info → Run anyway</strong>. Full explanation in
+              <a href="./known-issues.html">Known issues</a>.</p>
+          </div>
+          <h3>Requirements</h3>
+          <ul>
+            <li>Windows 10 or Windows 11, 64-bit.</li>
+            <li>Roughly 300 MB of disk space after installation.</li>
+            <li>No internet connection is needed to organize files.</li>
+          </ul>
+          <h3>Uninstall</h3>
+          <p>Remove the app from <strong>Settings → Apps → Installed apps → Desktop Organizer</strong>, or run the
+            uninstaller from the Start Menu folder. Your organized files and your library stay where you put them;
+            the app does not delete user data on uninstall.</p>
+        </section>
+
+        <section class="doc-section" id="first-start">
+          <h2>First start</h2>
+          <p>On launch, Desktop Organizer opens the <strong>Dashboard</strong>, which summarises the last scans,
+            the health score and the number of files handled in real time. The left sidebar gives you
+            <strong>Files</strong>, <strong>Organizer</strong>, <strong>Search</strong>, <strong>Cleanup</strong>,
+            <strong>Security</strong>, <strong>Assistant</strong> and <strong>Settings</strong>.</p>
+          <ol>
+            <li>Open <strong>Settings → Monitoring</strong> and switch on the folders you want watched. Desktop and
+              Downloads are enabled by default; Documents, Pictures, Videos and Music are opt-in.</li>
+            <li>Decide whether to keep files where they are or route them into one central library
+              (<strong>Settings → Organization → Use one central library</strong>).</li>
+            <li>Turn on <strong>Start with Windows</strong> if you want the monitor running in the background from
+              login. Closing the window sends the app to the system tray, it does not stop monitoring.</li>
+            <li>Run your first pass from <strong>Organizer → Organize now</strong> and review the preview before
+              confirming the move.</li>
+          </ol>
+          <div class="callout callout-info">
+            <h3>Nothing moves without a preview</h3>
+            <p>Every organizing run shows the planned source and destination for each file first, and each completed
+              run is recorded in Organization History so you can undo it.</p>
+          </div>
+        </section>
+
+        <section class="doc-section" id="desktop-organization">
+          <h2>Desktop organization</h2>
+          <p>The Desktop is one of the six monitor roots. When real-time monitoring is enabled, a new file on your
+            desktop is held briefly while it finishes being written, then filed into a category folder based on its
+            type.</p>
+          <h3>Categories</h3>
+          <p>Files are grouped into <strong>Documents, Images, Videos, Music, Archives, Code, Installers</strong> and
+            <strong>Others</strong>. With the central library off, those folders are created next to the watched
+            folder, so your desktop becomes <code>Desktop\Images</code>, <code>Desktop\Documents</code> and so on.
+            With the library on, they are created inside <code>OrganizerLibrary</code> instead.</p>
+          <h3>What is left alone</h3>
+          <ul>
+            <li>Shortcuts, folders and pinned items you created yourself.</li>
+            <li>Files that are still being written — see the stabilization delay under
+              <a href="#settings">Settings</a>.</li>
+            <li>Locked or in-use files; the monitor retries once they are released.</li>
+          </ul>
+          <h3>Undo</h3>
+          <p>Open <strong>Organizer → History</strong>, pick the run and choose <strong>Undo moves</strong>. Individual
+            batches can be reverted too, which is handy when one run swept up something you wanted to keep on the
+            desktop.</p>
+        </section>
+
+        <section class="doc-section" id="downloads-organization">
+          <h2>Downloads organization</h2>
+          <p>Downloads is the second root that ships enabled, and it is treated more carefully than any other folder
+            because a half-finished download must never be moved.</p>
+          <h3>In-progress files are protected</h3>
+          <p>Desktop Organizer ignores installer scratch extensions
+            (<code>.crdownload</code>, <code>.partial</code>, <code>.part</code>, <code>.download</code>,
+            <code>.opdownload</code>, <code>.tmp</code>) and waits for a <strong>download completion delay</strong>
+            after a file stops growing before it touches it. The dashboard counter
+            <em>Waiting to settle</em> shows how many files are in that quiet period.</p>
+          <h3>After completion</h3>
+          <ol>
+            <li>Completed installers land in <strong>Installers</strong>, archives in <strong>Archives</strong>,
+              documents and media in their own category.</li>
+            <li><strong>Cleanup → Downloads review</strong> lists stale or oversized leftovers you can move to the
+              Recycle Bin, and an <em>Ignored list</em> keeps items you want to leave in place.</li>
+            <li>Duplicate installers are flagged by the same content-based matcher used by the
+              <a href="#duplicate-cleaner">duplicate cleaner</a>.</li>
+          </ol>
+        </section>
+
+        <section class="doc-section" id="duplicate-cleaner">
+          <h2>Duplicate cleaner</h2>
+          <p>Open <strong>Cleanup</strong> to scan for duplicate files, large files and clutter. Duplicate detection
+            compares file contents in chunks rather than trusting names or sizes, so two differently named copies of
+            the same document are still matched.</p>
+          <h3>Reviewing a group</h3>
+          <ul>
+            <li>Results are grouped so you can compare path, size and date, and sort by <strong>Size</strong>,
+              <strong>Date</strong> or <strong>Name</strong>.</li>
+            <li>One copy in every group is kept by default — the cleaner never selects the whole group for you.</li>
+            <li>Confirming a removal moves the selected copies to the <strong>Recycle Bin</strong>, so the action is
+              reversible until you empty it.</li>
+          </ul>
+          <div class="callout callout-ok">
+            <h3>Duplicate safety</h3>
+            <p>From v1.0.1 onward, deletion candidates are re-checked against the current file state before anything
+              moves, so a group that changed while you were reviewing it is skipped instead of partially deleted.</p>
+          </div>
+          <h3>Large files and hidden items</h3>
+          <p>The same page reports large files above your configured size threshold and hidden items, with the disk
+            totals for the scanned roots. Both use the Recycle Bin flow, never permanent deletion.</p>
+        </section>
+
+        <section class="doc-section" id="ai-features">
+          <h2>AI features</h2>
+          <p>The assistant lives under <strong>Assistant</strong> and translates plain-language requests into file
+            operations — “sort my downloads by type”, “find every PDF older than a year”. It is optional and
+            provider-neutral: point it at an OpenAI-compatible endpoint or a local model server running on your
+            machine.</p>
+          <h3>Permission levels</h3>
+          <p>Each action the assistant proposes is classified before it runs:</p>
+          <ul>
+            <li><strong>Read only</strong> — search and reporting; nothing changes.</li>
+            <li><strong>Launches something</strong> — opens a file or folder.</li>
+            <li><strong>Changes files</strong> — moves or renames items, always shown as a preview first.</li>
+            <li><strong>Deletes files</strong> — requires explicit confirmation and routes to the Recycle Bin.</li>
+          </ul>
+          <h3>Keeping it local</h3>
+          <p>Only the request text you send reaches the provider you configured; file contents are not attached unless
+            you include them. With a local model server, nothing leaves the machine at all. Model settings can be
+            reset at any time from the assistant page.</p>
+        </section>
+
+        <section class="doc-section" id="settings">
+          <h2>Settings</h2>
+          <p>Everything that changes behaviour is in <strong>Settings</strong>, grouped by what it affects.</p>
+          <h3>Monitoring</h3>
+          <ul>
+            <li><strong>Auto-organize enabled</strong> — master switch for filing files automatically.</li>
+            <li><strong>Enable real-time monitoring</strong> — watch roots with a live file-system listener.</li>
+            <li><strong>Enable scheduled scan</strong> — periodic sweep on an interval (default 60 seconds, range
+              15–3600).</li>
+            <li><strong>File stabilization delay</strong> — how long a file must stop changing before it is filed
+              (default 2 seconds).</li>
+            <li><strong>Download completion delay</strong> — extra quiet time after a file was seen growing
+              (default 10 seconds).</li>
+            <li><strong>Watched folders</strong> — the six known roots plus up to twelve custom folders.</li>
+          </ul>
+          <h3>Organization</h3>
+          <ul>
+            <li><strong>Use one central library</strong> — route everything into one place instead of sorting in
+              place.</li>
+            <li><strong>Library location</strong> — where that library lives; <code>OrganizerLibrary</code> is created
+              when you switch it on.</li>
+            <li><strong>Existing file</strong> — conflict strategy when the destination already holds a match:
+              <em>rename</em> (default) or <em>skip</em>.</li>
+          </ul>
+          <h3>Startup, notifications and appearance</h3>
+          <ul>
+            <li><strong>Start with Windows</strong> — register the app at logon.</li>
+            <li><strong>Organize on startup</strong> — run a full pass as soon as the app launches.</li>
+            <li><strong>Windows notifications</strong> — toast messages for completed runs and warnings.</li>
+            <li><strong>Theme</strong> — light, dark or follow Windows.</li>
+          </ul>
+          <h3>Diagnostics</h3>
+          <p>The settings area also exposes the log viewer (filter by level, category or text) and a diagnostics
+            snapshot with app, Python and engine versions plus the local API address — the useful first thing to check
+            when something looks wrong.</p>
+        </section>
+
+        <section class="doc-section" id="troubleshooting">
+          <h2>Troubleshooting</h2>
+          <h3>The app says it cannot reach the engine</h3>
+          <p>The interface talks to a local API over loopback. Restart the app from the tray
+            (<strong>Quit Desktop Organizer</strong>, then launch again) and check the diagnostics snapshot in
+            Settings. Nothing is sent over the network.</p>
+          <h3>Files are not being organized</h3>
+          <ol>
+            <li>Confirm <strong>Auto-organize enabled</strong> and <strong>Enable real-time monitoring</strong> are on.</li>
+            <li>Check that the folder is actually a watched root, or add it as a custom watched folder.</li>
+            <li>Look at <em>Waiting to settle</em> on the dashboard — files inside the stabilization window are
+              intentionally untouched.</li>
+            <li>Open the monitoring log in Settings and filter for the folder name.</li>
+          </ol>
+          <h3>A download broke or a file moved too early</h3>
+          <p>Fixed in v1.0.1. If it still happens, raise the <strong>Download completion delay</strong> and make sure
+            the browser's temporary extension is on the protected list. Undo the move from history and report it on the
+            <a href="https://github.com/iifamily409-rgb/Desktop-Organizer/issues" target="_blank" rel="noopener">issue tracker</a>.</p>
+          <h3>Too many notifications</h3>
+          <p>Turn off <strong>Windows notifications</strong> for repeat-only reporting, or disable
+            <strong>Organize on startup</strong> if the burst happens at logon.</p>
+          <h3>Nothing appears in the tray</h3>
+          <p>Windows hides new tray icons by default. Open the overflow area (the chevron next to the clock) and drag
+            the Desktop Organizer icon onto the visible bar; tray stability was hardened in v1.0.1.</p>
+          <div class="page-links">
+            <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download for Windows</a>
+            <a class="btn btn-secondary btn-lg" href="./known-issues.html">Known issues</a>
+            <a class="btn btn-ghost btn-lg" href="./index.html#faq">FAQ</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.1c.66 0 1.28.26 1.75.72L11.9 7.3c.47.46 1.09.72 1.75.72h3.9A2.5 2.5 0 0 1 20 10.5v6A2.5 2.5 0 0 1 17.5 19h-12A2.5 2.5 0 0 1 3 16.5v-9Z"/>
+            <path d="M8.5 13.5h7M12 10.5v6"/>
+          </svg>
+        </span>
+        <span class="brand-text"><span class="brand-name">Desktop Organizer</span></span>
+      </a>
+      <p>A modern Windows desktop organizer that keeps files categorized, duplicates cleaned, and your workspace calm.</p>
+      <p class="developer">Developer: <a href="https://github.com/iifamily409-rgb" target="_blank" rel="noopener">Suleman Alam</a></p>
+    </div>
+
+    <nav class="footer-col" aria-label="Product">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="./index.html#features">Features</a></li>
+        <li><a href="./index.html#screenshots">Screenshots</a></li>
+        <li><a href="./index.html#how-it-works">How it works</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Resources">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download</a></li>
+        <li><a href="./index.html#changelog">Release Notes</a></li>
+        <li><a href="./documentation.html">Documentation</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Support">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="./index.html#faq">FAQ</a></li>
+        <li><a href="./known-issues.html">Known issues</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/issues" target="_blank" rel="noopener">Report an issue</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases" target="_blank" rel="noopener">Releases</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Legal">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="./terms-of-use.html">Terms of Use</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© 2026 Desktop Organizer. All rights reserved.</p>
+    <p class="footer-meta"><span>Built for Windows 10 &amp; 11</span><span class="sep">·</span><span>MIT License</span></p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5.5 11.5 6.5-6.5 6.5 6.5"/></svg>
+</button>
+
+<script src="./script.js" defer></script>
+</body>
+</html>

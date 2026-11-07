@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Known Issues - Desktop Organizer</title>
+<meta name="description" content="Known issues in Desktop Organizer v1.0.1: the Windows SmartScreen warning caused by the unsigned installer, how to verify and run the setup, what was fixed and how to report a bug.">
+<meta name="author" content="Suleman Alam">
+<meta name="theme-color" content="#06070d">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://iifamily409-rgb.github.io/Desktop-Organizer/known-issues.html">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Desktop Organizer">
+<meta property="og:title" content="Desktop Organizer Known Issues">
+<meta property="og:description" content="The SmartScreen warning on the unsigned installer and how to get past it, plus what v1.0.1 fixed and which behaviours are being watched.">
+<meta property="og:url" content="https://iifamily409-rgb.github.io/Desktop-Organizer/known-issues.html">
+<meta property="og:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Desktop Organizer Known Issues">
+<meta name="twitter:description" content="The SmartScreen warning on the unsigned installer and how to get past it, plus what v1.0.1 fixed and which behaviours are being watched.">
+<meta name="twitter:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
+
+<link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="./assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="container header-inner">
+    <a class="brand" href="./index.html" aria-label="Desktop Organizer home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.1c.66 0 1.28.26 1.75.72L11.9 7.3c.47.46 1.09.72 1.75.72h3.9A2.5 2.5 0 0 1 20 10.5v6A2.5 2.5 0 0 1 17.5 19h-12A2.5 2.5 0 0 1 3 16.5v-9Z"/>
+          <path d="M8.5 13.5h7M12 10.5v6"/>
+        </svg>
+      </span>
+      <span class="brand-text">
+        <span class="brand-name">Desktop Organizer</span>
+        <span class="brand-sub">for Windows 10 &amp; 11</span>
+      </span>
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <ul class="nav-links">
+        <li><a href="./index.html#features">Features</a></li>
+        <li><a href="./index.html#screenshots">Screenshots</a></li>
+        <li><a href="./index.html#how-it-works">How it works</a></li>
+        <li><a href="./index.html#download">Download</a></li>
+        <li><a href="./index.html#changelog">Changelog</a></li>
+        <li><a href="./index.html#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-mobile-actions">
+        <a class="btn btn-primary btn-block" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download for Windows</a>
+      </div>
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-ghost btn-sm github-btn" href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.82 3.63-3.55 3.82.28.24.53.72.53 1.45v2.15c0 .2.13.45.54.37A8 8 0 0 1 0 8Z"/></svg>
+        <span>GitHub</span>
+      </a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download</a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="container narrow">
+      <p class="eyebrow">Support</p>
+      <h1 class="page-title">Known issues</h1>
+      <p class="page-lead">Current limitations in Desktop Organizer v1.0.1, what causes them, and what to do when you run into one. Anything not listed here is probably a bug — please report it.</p>
+      <div class="page-stamp">
+        <span class="tag tag-warn">1 open issue</span>
+        <span class="tag tag-ok">8 resolved in v1.0.1</span>
+        <span class="tag">Reviewed 7 Nov 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="page-body">
+    <div class="container doc-layout">
+
+      <aside class="doc-toc" aria-label="On this page">
+        <h4>Contents</h4>
+        <ol>
+          <li><a href="#smartscreen">Windows SmartScreen warning</a></li>
+          <li><a href="#resolved">Resolved in v1.0.1</a></li>
+          <li><a href="#watching">Being watched</a></li>
+          <li><a href="#reporting">How to report an issue</a></li>
+        </ol>
+      </aside>
+
+      <div class="doc-content prose">
+
+        <section class="doc-section" id="smartscreen">
+          <h2>Open issues</h2>
+
+          <div class="issue-card">
+            <div class="issue-head">
+              <h2>Windows SmartScreen warning on the installer</h2>
+              <span class="tag tag-warn">Open</span>
+            </div>
+            <div class="issue-rows">
+              <h3>What you see</h3>
+              <p>After double-clicking <code>Desktop-Organizer-Setup-v1.0.1.exe</code>, Windows shows a blue
+                “Windows protected your PC” dialog that hides the <strong>Run</strong> button.</p>
+              <h3>Reason</h3>
+                <p>The application is <strong>not code-signed</strong>. SmartScreen trusts executables that carry a
+                  certificate from a purchased code-signing identity and have accumulated download reputation. This
+                  build is signed only by its own hash, so every fresh copy is unknown to Windows — the warning is
+                  about the certificate status, not about the contents of the app.</p>
+              <h3>Solution</h3>
+              <ol>
+                <li>In the warning dialog, click <strong>More info</strong>.</li>
+                <li>Click <strong>Run anyway</strong>.</li>
+                <li>If your browser flagged the file instead, choose <strong>Keep</strong> / <strong>Show downloads</strong>
+                  → <strong>Keep</strong>.</li>
+              </ol>
+              <h3>Before you click anything</h3>
+              <p>Confirm you got the installer from this site or the official GitHub release, and that the file is
+                <code>Desktop-Organizer-Setup-v1.0.1.exe</code> at 98.2 MB with SHA-256
+                <code>125436d4ca2ebbaec821229bc32041ae122c8a4b843ed28a780179e2d157572d</code>. Verify from the folder
+                containing the file:</p>
+              <p><code>certutil -hashfile "Desktop-Organizer-Setup-v1.0.1.exe" SHA256</code></p>
+              <h3>Workarounds</h3>
+              <ul>
+                <li>Unblock the file: right-click it → <strong>Properties</strong> → tick
+                  <strong>Unblock</strong> → OK, then run the setup.</li>
+                <li>Keep the installer in a folder excluded from aggressive antivirus scans; some security suites flag
+                  unsigned NSIS packages on top of SmartScreen.</li>
+                <li>Corporate machines with AppLocker or Software Restriction Policies may block the run entirely —
+                  that needs a local administrator, not a workaround.</li>
+              </ul>
+              <h3>Status</h3>
+              <p>Code-signing the build requires a signing certificate, which the project does not currently hold.
+                Reputation improves as more users download the same unmodified asset, so later releases of the same
+                build tend to trigger fewer prompts.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="doc-section" id="resolved">
+          <h2>Resolved in v1.0.1</h2>
+          <p>Each of these was reported against v1.0.0 and is fixed in the current release. Update to
+            <code>Desktop-Organizer-Setup-v1.0.1.exe</code> to get them.</p>
+          <ul>
+            <li><strong>Download completion detection</strong> — files still transferring are no longer treated as
+              finished.</li>
+            <li><strong>.crdownload protection</strong> — Chrome temporary downloads are never moved.</li>
+            <li><strong>.part protection</strong> — partial downloads from browsers and download managers are
+              skipped.</li>
+            <li><strong>.tmp protection</strong> — scratch and temporary files stay where their application expects
+              them.</li>
+            <li><strong>Notification spam</strong> — repeated toasts from a single run are deduplicated.</li>
+            <li><strong>Startup issues</strong> — the logon registration path is reconciled instead of left
+              stale.</li>
+            <li><strong>Duplicate safety</strong> — candidates are re-checked before a Recycle Bin move.</li>
+            <li><strong>OrganizerLibrary routing</strong> — files reach the intended category folder in the central
+              library.</li>
+          </ul>
+          <p>Real-time monitoring, folder-local organization, tray stability, installer reliability and overall release
+            quality were improved in the same pass; see the
+            <a href="./index.html#changelog">changelog</a> for the full list.</p>
+        </section>
+
+        <section class="doc-section" id="watching">
+          <h2>Being watched</h2>
+          <p>Behaviours that are not bugs, but that surprise people often enough to list.</p>
+          <ul>
+            <li><strong>The tray icon can be hidden.</strong> Windows puts new tray icons in the overflow area. Drag
+              the Desktop Organizer icon onto the visible bar once and it stays.</li>
+            <li><strong>Closing the window does not stop organizing.</strong> The app keeps running in the tray; use
+              <strong>Quit Desktop Organizer</strong> to stop it for real.</li>
+            <li><strong>Newly created files wait before being filed.</strong> The stabilization and download
+              completion delays (Settings → Monitoring) are deliberate — a file that is still growing is never
+              touched.</li>
+            <li><strong>OneDrive placeholder files.</strong> Cloud-only files may be skipped or trigger a download
+              depending on your Windows settings; keep the placeholder materialized if you want it organized.</li>
+            <li><strong>Antivirus false positives.</strong> Unsigned installers that write to a user profile can be
+              quarantined by aggressive scanners. Restore the file and add an exclusion if that happens, and tell us
+              so the detection can be challenged.</li>
+            <li><strong>Web fonts require network.</strong> This website loads fonts from a CDN; with no connection
+              the pages still render in a system fallback font.</li>
+          </ul>
+        </section>
+
+        <section class="doc-section" id="reporting">
+          <h2>How to report an issue</h2>
+          <ol>
+            <li>Open <strong>Settings → Diagnostics</strong> and copy the version snapshot.</li>
+            <li>Note what you expected, what happened, and which folder was involved.</li>
+            <li>Attach the relevant lines from the monitoring log in Settings.</li>
+            <li>File it on the
+              <a href="https://github.com/iifamily409-rgb/Desktop-Organizer/issues" target="_blank" rel="noopener">issue tracker</a>,
+              checking first whether it is already open.</li>
+          </ol>
+          <p>If a run moved something you did not want moved, undo it from Organization History first — then report it,
+            including the run so the cause can be traced.</p>
+          <div class="page-links">
+            <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download for Windows</a>
+            <a class="btn btn-secondary btn-lg" href="./documentation.html">Documentation</a>
+            <a class="btn btn-ghost btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/tag/v1.0.1" target="_blank" rel="noopener">Release notes</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.1c.66 0 1.28.26 1.75.72L11.9 7.3c.47.46 1.09.72 1.75.72h3.9A2.5 2.5 0 0 1 20 10.5v6A2.5 2.5 0 0 1 17.5 19h-12A2.5 2.5 0 0 1 3 16.5v-9Z"/>
+            <path d="M8.5 13.5h7M12 10.5v6"/>
+          </svg>
+        </span>
+        <span class="brand-text"><span class="brand-name">Desktop Organizer</span></span>
+      </a>
+      <p>A modern Windows desktop organizer that keeps files categorized, duplicates cleaned, and your workspace calm.</p>
+      <p class="developer">Developer: <a href="https://github.com/iifamily409-rgb" target="_blank" rel="noopener">Suleman Alam</a></p>
+    </div>
+
+    <nav class="footer-col" aria-label="Product">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="./index.html#features">Features</a></li>
+        <li><a href="./index.html#screenshots">Screenshots</a></li>
+        <li><a href="./index.html#how-it-works">How it works</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Resources">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download</a></li>
+        <li><a href="./index.html#changelog">Release Notes</a></li>
+        <li><a href="./documentation.html">Documentation</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Support">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="./index.html#faq">FAQ</a></li>
+        <li><a href="./known-issues.html">Known issues</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/issues" target="_blank" rel="noopener">Report an issue</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases" target="_blank" rel="noopener">Releases</a></li>
+      </ul>
+    </nav>
+
+    <nav class="footer-col" aria-label="Legal">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="./terms-of-use.html">Terms of Use</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>© 2026 Desktop Organizer. All rights reserved.</p>
+    <p class="footer-meta"><span>Built for Windows 10 &amp; 11</span><span class="sep">·</span><span>MIT License</span></p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5.5 11.5 6.5-6.5 6.5 6.5"/></svg>
+</button>
+
+<script src="./script.js" defer></script>
+</body>
+</html>
