@@ -4,22 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Terms of Use - Desktop Organizer</title>
-<meta name="description" content="Terms of Use for Desktop Organizer: MIT licence, user responsibility, use at your own risk, backup recommendations, no warranty and limitation of liability.">
-<meta name="author" content="Suleman Alam">
+<meta name="description" content="Terms of Use for Desktop Organizer: MIT licence scope, user responsibility, risks of automated file operations, backup recommendations, no warranty and limitation of liability.">
+<meta name="author" content="Ahmed-Coder">
 <meta name="theme-color" content="#06070d">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="dark light">
 <link rel="canonical" href="https://iifamily409-rgb.github.io/Desktop-Organizer/terms-of-use.html">
 <meta name="robots" content="index, follow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Desktop Organizer">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Desktop Organizer Terms of Use">
-<meta property="og:description" content="MIT-licensed free software. Read your responsibilities, the risks of automated file operations, backup advice and the warranty disclaimers.">
+<meta property="og:description" content="Free, MIT-licensed software. Read your responsibilities, the risks, backup advice and the warranty disclaimers before your first run.">
 <meta property="og:url" content="https://iifamily409-rgb.github.io/Desktop-Organizer/terms-of-use.html">
 <meta property="og:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
+<meta property="og:image:alt" content="Desktop Organizer — smart Windows file organizer">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Desktop Organizer Terms of Use">
-<meta name="twitter:description" content="MIT-licensed free software. Read your responsibilities, the risks of automated file operations, backup advice and the warranty disclaimers.">
+<meta name="twitter:description" content="Free, MIT-licensed software. Read your responsibilities, the risks, backup advice and the warranty disclaimers before your first run.">
 <meta name="twitter:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
 
 <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
@@ -27,10 +30,47 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<script>
+  /* Apply the saved theme before first paint so nothing flashes in the wrong colours. */
+  (function () {
+    var pref = "system";
+    try { pref = window.localStorage.getItem("do-theme") || "system"; } catch (e) {}
+    var light = pref === "light" || (pref !== "dark" && window.matchMedia("(prefers-color-scheme: light)").matches);
+    document.documentElement.setAttribute("data-theme-choice", pref);
+    document.documentElement.setAttribute("data-theme", light ? "light" : "dark");
+  })();
+</script>
 <link rel="stylesheet" href="./style.css">
+<noscript><style>.reveal, .reveal-stagger > *, .term-ex, .mascot-bubble { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Terms of Use",
+  "url": "https://iifamily409-rgb.github.io/Desktop-Organizer/terms-of-use.html",
+  "description": "Terms of Use for Desktop Organizer: MIT licence scope, user responsibility, risks of automated file operations, backup recommendations, no warranty and limitation of liability.",
+  "isPartOf": { "@type": "WebSite", "name": "Desktop Organizer", "url": "https://iifamily409-rgb.github.io/Desktop-Organizer/" },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Desktop Organizer",
+    "softwareVersion": "1.0.2",
+    "operatingSystem": "Windows 10, Windows 11",
+    "downloadUrl": "https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe",
+    "codeRepository": "https://github.com/iifamily409-rgb/Desktop-Organizer",
+    "author": { "@type": "Person", "name": "Ahmed-Coder", "url": "https://github.com/iifamily409-rgb" }
+  },
+  "publisher": { "@type": "Person", "name": "Ahmed-Coder", "url": "https://github.com/iifamily409-rgb" },
+  "dateModified": "2026-11-08"
+}
+</script>
 </head>
+
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+
+<div class="fx-glow" id="fxGlow" aria-hidden="true"></div>
+<canvas class="fx-particles" id="fxParticles" aria-hidden="true"></canvas>
 
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
@@ -50,6 +90,7 @@
     <nav class="site-nav" id="siteNav" aria-label="Primary">
       <ul class="nav-links">
         <li><a href="./index.html#features">Features</a></li>
+        <li><a href="./index.html#copilot">Copilot</a></li>
         <li><a href="./index.html#screenshots">Screenshots</a></li>
         <li><a href="./index.html#how-it-works">How it works</a></li>
         <li><a href="./index.html#download">Download</a></li>
@@ -57,16 +98,32 @@
         <li><a href="./index.html#faq">FAQ</a></li>
       </ul>
       <div class="nav-mobile-actions">
-        <a class="btn btn-primary btn-block" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download for Windows</a>
+        <a class="btn btn-primary btn-block" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download for Windows</a>
       </div>
     </nav>
 
     <div class="header-actions">
+      <button class="btn btn-ghost btn-sm kbd-hint" id="paletteTrigger" type="button" aria-label="Open the website command palette">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7.5h16"/><path d="M4 12h10"/><path d="M4 16.5h7"/><path d="m17.5 14.5 2.5 2.5-2.5 2.5"/></svg>
+        <span>Search</span>
+        <kbd class="kbd">Ctrl K</kbd>
+      </button>
       <a class="btn btn-ghost btn-sm github-btn" href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">
-        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.82 3.63-3.55 3.82.28.24.53.72.53 1.45v2.15c0 .2.13.45.54.37A8 8 0 0 1 0 8Z"/></svg>
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.94-.01 2.21 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <span>GitHub</span>
       </a>
-      <a class="btn btn-primary btn-sm" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download</a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme">
+        <button type="button" data-theme-btn="system" aria-pressed="false" title="Follow the system theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8.5 20.5h7"/></svg>
+        </button>
+        <button type="button" data-theme-btn="light" aria-pressed="false" title="Light theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+        </button>
+        <button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+        </button>
+      </div>
       <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -75,149 +132,273 @@
 </header>
 
 <main id="main">
-  <section class="page-hero">
-    <div class="container narrow">
-      <p class="eyebrow">Legal</p>
-      <h1 class="page-title">Terms of Use</h1>
-      <p class="page-lead">These terms explain what you agree to when you install and run Desktop Organizer, what the project promises, and — equally important — what it does not promise.</p>
-      <div class="page-stamp">
-        <span class="tag">Applies to v1.0.1</span>
-        <span class="tag">Last updated 7 Nov 2026</span>
-        <span class="tag">MIT licensed</span>
-      </div>
+
+<section class="page-hero" data-mascot-key="terms">
+  <div class="container narrow">
+    <p class="eyebrow">Legal</p>
+    <h1 class="page-title">Terms of Use</h1>
+    <p class="page-lead">
+      Desktop Organizer is free, open-source software licensed under the MIT licence. These terms explain what that licence gives you, what it does not promise, and
+      which decisions stay with you: what the app is allowed to touch, what you back up before you run it, and what you send to an AI provider you configured
+      yourself.
+    </p>
+    <div class="page-stamp">
+      <span class="tag">Version 1.0.2</span>
+      <span class="tag">Effective 8 November 2026</span>
+      <span class="tag">MIT licence</span>
+      <span class="tag tag-ok">No account, no activation, no subscription</span>
+      <span class="tag tag-warn">Provided as is, without warranty</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="page-body">
-    <div class="container doc-layout">
+<section class="page-body" data-mascot-key="terms">
+  <div class="container doc-layout">
 
-      <aside class="doc-toc" aria-label="On this page">
-        <h4>Contents</h4>
-        <ol>
-          <li><a href="#acceptance">Accepting these terms</a></li>
-          <li><a href="#licence">Licence and scope</a></li>
-          <li><a href="#responsibility">Your responsibility</a></li>
-          <li><a href="#risk">Use at your own risk</a></li>
-          <li><a href="#backups">Back up first</a></li>
-          <li><a href="#warranty">No warranty</a></li>
-          <li><a href="#liability">Limitation of liability</a></li>
-          <li><a href="#third-party">Third-party services</a></li>
-          <li><a href="#changes">Changes to these terms</a></li>
-        </ol>
-      </aside>
+    <aside class="doc-toc" aria-label="On this page">
+      <h4>Contents</h4>
+      <ol>
+        <li><a href="#accepting-these-terms">Accepting these terms</a></li>
+        <li><a href="#licence-and-scope">Licence and scope</a></li>
+        <li><a href="#your-responsibility">Your responsibility</a></li>
+        <li><a href="#use-at-your-own-risk">Use at your own risk</a></li>
+        <li><a href="#back-up-first">Back up first</a></li>
+        <li><a href="#no-warranty">No warranty</a></li>
+        <li><a href="#limitation-of-liability">Limitation of liability</a></li>
+        <li><a href="#third-party-services">Third-party services</a></li>
+        <li><a href="#changes-to-these-terms">Changes to these terms</a></li>
+      </ol>
+    </aside>
 
-      <div class="doc-content prose">
+    <div class="doc-content prose">
 
-        <section class="doc-section" id="acceptance">
-          <h2>Accepting these terms</h2>
-          <p>By downloading, installing or using Desktop Organizer you agree to these terms. If you do not agree with
-            them, do not install the software — remove the installer and, if you already ran it, uninstall from
-            <strong>Settings → Apps</strong>.</p>
-          <p>The software is provided free of charge for both personal and commercial use under the MIT licence.</p>
-        </section>
+      <section class="doc-section" id="accepting-these-terms">
+        <h2>Accepting these terms</h2>
+        <p>
+          By downloading, installing or using Desktop Organizer you agree to these terms. If you do not agree, do not install it. There is no click-through
+          agreement, no account to register, no activation key to enter and no subscription to cancel: acceptance happens the moment you run the installer, because
+          that is the only practical way to distribute a free desktop tool.
+        </p>
+        <p>
+          If you install the app on a machine your employer owns or administers, you are bound by their policy as well as by these terms, and someone acting for an
+          organisation should have authority to run file-organising software on it. These terms cover the software; they do not grant you rights over other people's
+          files, and they do not override a contract you have already signed.
+        </p>
+        <div class="callout callout-info">
+          <h3>What you are agreeing to, in one sentence</h3>
+          <p>
+            That a free, MIT-licensed program built by one maintainer will move files on your computer at your instruction, that it comes without warranty, and that
+            the judgement calls about what it touches and what you send to an AI provider are yours.
+          </p>
+        </div>
+      </section>
 
-        <section class="doc-section" id="licence">
-          <h2>Licence and scope</h2>
-          <p>You may use the app on machines you control, copy the installer, read and modify the source, and
-            redistribute it under the MIT licence terms. You may not represent the software as your own work or imply
-            an endorsement by the project.</p>
-          <ul>
-            <li>No account, licence key or activation is required, and none is issued.</li>
-            <li>There is no subscription, trial period or feature that expires.</li>
-            <li>The project maintainers are not able to grant, revoke or transfer usage rights beyond the licence.</li>
-          </ul>
-        </section>
+      <section class="doc-section" id="licence-and-scope">
+        <h2>Licence and scope</h2>
+        <p>
+          The source is published at
+          <a href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">github.com/iifamily409-rgb/Desktop-Organizer</a> under the MIT
+          licence. In everyday language the licence is permissive: you may use the app for personal, commercial or organisational work, study how it works, modify it
+          for yourself, and redistribute copies, subject to keeping the licence and copyright notice intact. It is provided free of charge and the maintainer is not
+          obliged to support it, to keep publishing it, or to accept any particular feature request.
+        </p>
+        <h3>What the released product is</h3>
+        <ul>
+          <li><strong>Target:</strong> Windows 10 or 11, 64-bit. Other platforms are out of scope for v1.0.2.</li>
+          <li><strong>Installer:</strong> <code>Desktop-Organizer-Setup-v1.0.2.exe</code>, 108.7 MB, built with NSIS, installed per user without administrator rights.</li>
+          <li><strong>Removal:</strong> Settings &gt; Apps &gt; Installed apps.</li>
+          <li><strong>Cost:</strong> free. No trial period, no upsell, no in-app purchase.</li>
+        </ul>
+        <h3>What the licence does not give you</h3>
+        <p>
+          A copy of the app does not entitle you to a warranty, to a fix on a schedule, or to continued availability of a specific build. The installer is not
+          code-signed, so nothing in these terms claims that Windows will vouch for the file: verification is by checksum against the published asset, and the
+          expected SmartScreen prompt is documented on the <a href="./known-issues.html">known issues</a> page.
+        </p>
+        <div class="callout callout-warn">
+          <h3>Do not present a modified build as this project</h3>
+          <p>
+            Fork and modify freely — that is the point of MIT. But if you redistribute a changed copy, say so, and do not publish it under the Desktop Organizer
+            name with our release URL, because people will reasonably assume you are distributing the audited source repository and the maintainable binary.
+          </p>
+        </div>
+      </section>
 
-        <section class="doc-section" id="responsibility">
-          <h2>Your responsibility</h2>
-          <p>You choose which folders to watch and which actions to confirm. Desktop Organizer moves, renames, files
-            and recycles items only within the scope you configure, and it shows a preview before each file
-            operation.</p>
-          <ul>
-            <li>You are responsible for reviewing previews before confirming a run.</li>
-            <li>You are responsible for complying with your employer's policy, school policy or any regulated-data
-              rules that apply to the folders you point the app at.</li>
-            <li>You are responsible for the prompts and provider settings you configure for the AI assistant, and for
-              having the right to send that text to the provider you choose.</li>
-            <li>Do not use the app to organize files you do not own or have no authority to move.</li>
-          </ul>
-        </section>
+      <section class="doc-section" id="your-responsibility">
+        <h2>Your responsibility</h2>
+        <p>
+          The app is an instrument, not a decision-maker. You choose the folders, you confirm destructive steps, and you own the consequences of both. In practice:
+        </p>
+        <ul>
+          <li>
+            <strong>Review previews before you apply.</strong> Organisation and duplicate results are shown for confirmation before files move. Reading that list is
+            the step that prevents almost every avoidable surprise, and clicking through it is a choice you are making.
+          </li>
+          <li>
+            <strong>Do not organise files you have no authority to move.</strong> That includes another person's profile, a client's material, a share you may read
+            but not restructure, and any folder whose layout someone else's process depends on.
+          </li>
+          <li>
+            <strong>Comply with the rules that bind your data.</strong> If you work under an employer policy, a contractual confidentiality obligation, or a
+            regulated-data regime such as patient, financial, personnel or minor's records, obtaining consent and following internal process remains your duty; the
+            app does not confer either.
+          </li>
+          <li>
+            <strong>Own your AI prompts.</strong> The assistant acts on what you ask it to, and the prompt text you send goes to the provider in your active profile.
+            You are responsible for what you include, for the cost of the calls, and for checking what a proposed action does before confirming it.
+          </li>
+          <li>
+            <strong>Keep your keys and your app data to yourself.</strong> Provider API keys, chat history and logs sit in your user profile. Anyone with access to
+            that account has access to them.
+          </li>
+        </ul>
+        <p>
+          You must also use the software lawfully: not to infringe third-party rights, not to circumvent access controls, and not to process somebody else's files
+          without a lawful basis to do so.
+        </p>
+      </section>
 
-        <section class="doc-section" id="risk">
-          <h2>Use at your own risk</h2>
-          <p>File-management software operates on live data. Bugs, interrupted power, disk errors, antivirus
-            interference, unusual file names, symbolic links, oneDrive placeholders and network drives can all produce
-            results nobody intends. The app is designed to be conservative — undo history, Recycle Bin instead of
-            permanent deletion, protected download extensions — but it cannot make file operations risk-free.</p>
-          <div class="callout callout-warn">
-            <h3>Understand the undo window</h3>
-            <p>Organization history restores moves the app performed. It does not restore files that a third party
-              deleted afterwards, and it is not a replacement for versioning or backup.</p>
-          </div>
-        </section>
+      <section class="doc-section" id="use-at-your-own-risk">
+        <h2>Use at your own risk</h2>
+        <p>
+          File-organising software operates on the one thing on your computer that usually cannot be recreated: your data. Moving a file changes its path, and paths
+          matter — a shortcut, a project reference, a sync client, a build script or an application's own settings may be relying on the old location. Recategorising
+          a folder you use daily is therefore not a risk-free act, and no amount of care in the code removes that.
+        </p>
+        <h3>Risks you should weigh before the first run</h3>
+        <ul>
+          <li>Applications that expect files at fixed paths may stop finding them after those files move.</li>
+          <li>Cloud-synced folders such as OneDrive can react to mass moves by re-uploading or re-materialising content; cloud-only placeholders may be skipped or pulled down.</li>
+          <li>Antivirus software may quarantine an unsigned installer; that is a false positive, but it still costs you a working installation.</li>
+          <li>Duplicate detection compares contents, and identical contents do not always mean identical purpose: two files may be the same bytes and still need to live in two places.</li>
+          <li>Real-time monitoring acts on files as they arrive, so an unusual workflow — a video project, a virtual machine image, a game mod load order — deserves a folder that is not watched.</li>
+        </ul>
+        <p>
+          The mitigations in the product exist to reduce these risks, not to eliminate them: files in progress are never touched, cleanup goes to the Recycle Bin
+          rather than deleting outright, every run is recorded in Organization History with undo, and each destructive action asks for confirmation. Undos depend on
+          the destination still being intact, so act promptly and back up regardless.
+        </p>
+      </section>
 
-        <section class="doc-section" id="backups">
-          <h2>Back up first</h2>
-          <p>Before your first full pass on an important folder, take a copy. Realistic options:</p>
-          <ol>
-            <li>Run on a small test folder first, or use <strong>Organize now</strong> and read the preview without
-              confirming.</li>
-            <li>Keep a current File History, system image or cloud copy of anything you could not afford to
-              recreate.</li>
-            <li>Empty the Recycle Bin only after you are satisfied with a cleanup session.</li>
-            <li>Watch the first few real-time runs from the dashboard so you learn what the app does with your
-              specific file mix.</li>
-          </ol>
-          <p>By using the software you accept that running it against un-backed-up data is your own decision.</p>
-        </section>
+      <section class="doc-section" id="back-up-first">
+        <h2>Back up first</h2>
+        <p>
+          Make a copy of anything you cannot afford to reconstruct before you let the app reorganise a folder. This is the single most useful thing a new user can do
+          and it is a condition of sensible use, not a formality.
+        </p>
+        <ul>
+          <li>Take a fresh backup, or at minimum a copied snapshot, of the folders you are about to organise.</li>
+          <li>Prefer a backup you can restore from, and test a restore of one file so you know the mechanism works.</li>
+          <li>On a work machine, follow the organisation's backup and change process rather than inventing your own.</li>
+          <li>Start with one folder on a small subset, confirm the result reads correctly, then widen the scope.</li>
+          <li>Empty the Recycle Bin only once you are satisfied, because a recycled file is still recoverable until you do.</li>
+          <li>Keep Organization History available while you decide: it is the record undo relies on.</li>
+        </ul>
+        <p>
+          Nothing in these terms obliges you to buy any particular backup product. The expectation is simpler than that: if you have not got a second copy, you should
+          not be running an automated move over the folder that holds the only one.
+        </p>
+        <div class="callout callout-ok">
+          <h3>A sensible first run</h3>
+          <p>
+            Back up Downloads, enable monitoring for that one folder, leave the default stabilization and completion delays alone, organise a handful of finished
+            files, review the preview, and check that the projects depending on those paths still open. Only then add Documents, Pictures or a custom folder.
+          </p>
+        </div>
+      </section>
 
-        <section class="doc-section" id="warranty">
-          <h2>No warranty</h2>
-          <p>The software is provided <strong>“as is”</strong>, without warranty of any kind, express or implied,
-            including but not limited to the warranties of merchantability, fitness for a particular purpose and
-            non-infringement. No support, availability, uptime or bug-fix obligation is promised, and the maintainers
-            do not guarantee that any version will be free from defects or suitable for your workload.</p>
-          <p>Statements on this website describe intended behaviour. If the software does something different in your
-            environment, that is a bug report, not a warranty claim.</p>
-        </section>
+      <section class="doc-section" id="no-warranty">
+        <h2>No warranty</h2>
+        <p>
+          <strong>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+          MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. YOU ASSUME ANY AND ALL RISK FROM THE USE OF THE SOFTWARE.</strong>
+        </p>
+        <p>
+          In plain terms: nobody warrants that the app will work on your machine, that it will keep working after an update or a Windows change, that it will sort
+          files the way you expect, that errors will be correctable, or that your files will end up where you assumed. There is no service-level commitment, no
+          guaranteed response time and no promise that a defect will be fixed. The
+          <a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/tag/v1.0.2" target="_blank" rel="noopener">v1.0.2 release notes</a> and the
+          <a href="./index.html#changelog">changelog</a> describe what a build does as recorded by the maintainer; they are not promises about your hardware, your
+          antivirus configuration, your network or your provider.
+        </p>
+        <h3>What we do try to be straight about</h3>
+        <ul>
+          <li>Known defects and their workarounds are published on the <a href="./known-issues.html">known issues</a> page rather than left for you to discover.</li>
+          <li>Documented behaviour is written against the release you are reading about, and setting names on this site match the labels on screen.</li>
+          <li>Claims about data handling are verifiable: the code is open, and the engine's API binds to <code>127.0.0.1</code> only.</li>
+        </ul>
+      </section>
 
-        <section class="doc-section" id="liability">
-          <h2>Limitation of liability</h2>
-          <p>To the maximum extent permitted by applicable law, the authors and copyright holders of Desktop Organizer
-            shall not be liable for any claim, damages or other liability — including loss of data, lost profits,
-            business interruption or other commercial loss — arising from the use of, or inability to use, the
-            software or its installer.</p>
-          <p>Some jurisdictions do not allow certain exclusions, so parts of these limitations may not apply to you;
-            in that case liability is limited to the greatest extent your local law allows.</p>
-        </section>
+      <section class="doc-section" id="limitation-of-liability">
+        <h2>Limitation of liability</h2>
+        <p>
+          To the maximum extent permitted by applicable law, the maintainer and anyone who has contributed to the project shall not be liable for any damage arising
+          out of the use of, or inability to use, the software — including loss of data, loss of goodwill, work stoppage, computer failure or malfunction, loss of
+          access to a file for any period, cost of procurement of substitute goods, and any special, incidental, indirect, consequential or exemplary damages, even
+          if the possibility of such damage has been raised. This limitation applies whether you rely on the software for personal use or in a business context, and
+          it applies to actions taken through the AI assistant as well as manual ones, since both run on your instruction.
+        </p>
+        <p>
+          Some jurisdictions do not allow certain exclusions or limitations of liability, in particular where the software is supplied in a consumer context, where
+          statutory guarantees cannot be excluded, or where loss arises from gross negligence, wilful misconduct, fraud or personal injury. Where that is the case,
+          some of the exclusions above may not apply to you and you may have additional rights. Nothing in this section is intended to exclude liability that cannot
+          lawfully be excluded, and where a limitation can only be partly applied, it applies in the narrowest way that remains lawful.
+        </p>
+        <div class="callout callout-warn">
+          <h3>Better protection costs less than a claim</h3>
+          <p>
+            Keep a backup, review previews before applying, confirm destructive steps deliberately, and leave folders alone when a workflow depends on their exact
+            layout. Those four habits limit your practical exposure far more effectively than any wording in a licence can.
+          </p>
+        </div>
+      </section>
 
-        <section class="doc-section" id="third-party">
-          <h2>Third-party services</h2>
-          <p>Desktop Organizer itself is offline software, but it can be configured to talk to services you choose,
-            and the installer you download is hosted by GitHub. Those platforms are governed by their own terms, and
-            the project is not responsible for their availability, policies or charges.</p>
-          <ul>
-            <li>GitHub — release hosting for the installer and the source repository.</li>
-            <li>Google Fonts — web fonts loaded by this website.</li>
-            <li>Any AI provider you configure — endpoint, model and pricing are yours to choose and manage.</li>
-          </ul>
-        </section>
+      <section class="doc-section" id="third-party-services">
+        <h2>Third-party services</h2>
+        <p>
+          Several things the app and this site rely on are operated by other parties, on their terms and not ours. Their availability, pricing, data handling and
+          content policies can change without notice, and we do not control them, endorse them, or accept responsibility for them. Your relationship with each of them
+          is direct.
+        </p>
+        <ul>
+          <li><strong>AI providers.</strong> OpenRouter, OpenAI, Google AI Studio, Anthropic, LM Studio, Ollama and any custom OpenAI-compatible endpoint you configure. You hold the account, you pay the bill, and their terms govern prompt data you send them.</li>
+          <li><strong>GitHub.</strong> Source hosting, issue tracking and the release asset storage that serves the installer.</li>
+          <li><strong>Google Fonts.</strong> The CDN this site requests its web fonts from; the site needs a connection for fonts and falls back to a system font offline.</li>
+          <li><strong>Windows and Microsoft.</strong> SmartScreen, the Recycle Bin, Windows Defender or other antivirus behaviour, and OneDrive placeholder handling are outside our control.</li>
+          <li><strong>Your own models and runtimes.</strong> Local providers run on software you install; their licence obligations are yours.</li>
+        </ul>
+        <p>
+          No API key, credential or provider configuration is bundled with the installer, and none is transmitted to us. Keys are stored in your app data folder and
+          sent only to the endpoint you configured. How the app treats personal data — which is to say, hardly at all — is covered by the
+          <a href="./privacy-policy.html">privacy policy</a>, which sits alongside these terms rather than inside them.
+        </p>
+      </section>
 
-        <section class="doc-section" id="changes">
-          <h2>Changes to these terms</h2>
-          <p>These terms may be updated for new releases or clarified when something is genuinely ambiguous. The
-            version published here is the one that applies to the copy you download; continuing to use the software
-            after an update means the current terms apply to that update.</p>
-          <div class="page-links">
-            <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download for Windows</a>
-            <a class="btn btn-secondary btn-lg" href="./privacy-policy.html">Privacy Policy</a>
-            <a class="btn btn-ghost btn-lg" href="./documentation.html">Documentation</a>
-          </div>
-        </section>
+      <section class="doc-section" id="changes-to-these-terms">
+        <h2>Changes to these terms</h2>
+        <p>
+          These terms may be revised as the software changes — a new feature, a new provider route, a change in how the project is distributed. The version date in
+          the banner at the top of this page identifies the text in force, updated wording is published here before it applies, and significant changes are noted
+          beside the release in the <a href="./index.html#changelog">changelog</a>. Using the software after a revision is published means the current text is the one
+          that governs your use; a build you already installed keeps working, and continuing to run it is treated as acceptance of the terms published for it.
+        </p>
+        <h3>Where to raise a question</h3>
+        <p>
+          The project is maintained by Ahmed-Coder. Technical defects, and anything ambiguous in the wording above, are best raised as
+          <a href="https://github.com/iifamily409-rgb/Desktop-Organizer/issues" target="_blank" rel="noopener">issues on GitHub</a>, where the discussion is
+          discoverable rather than private. Release files for checksum verification are on the
+          <a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases" target="_blank" rel="noopener">releases page</a>.
+        </p>
+        <div class="page-links">
+          <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download for Windows</a>
+          <a class="btn btn-secondary" href="./privacy-policy.html">Privacy policy</a>
+          <a class="btn btn-secondary" href="./known-issues.html">Known issues</a>
+        </div>
+      </section>
 
-      </div>
     </div>
-  </section>
+  </div>
+</section>
 
 </main>
 
@@ -234,13 +415,14 @@
         <span class="brand-text"><span class="brand-name">Desktop Organizer</span></span>
       </a>
       <p>A modern Windows desktop organizer that keeps files categorized, duplicates cleaned, and your workspace calm.</p>
-      <p class="developer">Developer: <a href="https://github.com/iifamily409-rgb" target="_blank" rel="noopener">Suleman Alam</a></p>
+      <p class="developer">Built by <a href="https://github.com/iifamily409-rgb" target="_blank" rel="noopener">Ahmed-Coder</a></p>
     </div>
 
     <nav class="footer-col" aria-label="Product">
       <h4>Product</h4>
       <ul>
         <li><a href="./index.html#features">Features</a></li>
+        <li><a href="./index.html#copilot">Copilot</a></li>
         <li><a href="./index.html#screenshots">Screenshots</a></li>
         <li><a href="./index.html#how-it-works">How it works</a></li>
       </ul>
@@ -250,7 +432,7 @@
       <h4>Resources</h4>
       <ul>
         <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download</a></li>
         <li><a href="./index.html#changelog">Release Notes</a></li>
         <li><a href="./documentation.html">Documentation</a></li>
       </ul>
@@ -281,10 +463,45 @@
   </div>
 </footer>
 
+<div class="mascot" id="mascot" role="img" aria-label="Desktop Organizer copilot mascot">
+  <p class="mascot-bubble" data-mascot-bubble aria-live="polite"></p>
+  <div class="mascot-stage" data-mascot-stage>
+    <div class="mascot-shell" data-mascot-shell>
+      <span class="mascot-ring" aria-hidden="true"></span>
+      <span class="mascot-ring b" aria-hidden="true"></span>
+      <span class="mascot-antenna" aria-hidden="true"></span>
+      <div class="mascot-core" aria-hidden="true">
+        <div class="mascot-face">
+          <span class="mascot-eye" data-mascot-eye></span>
+          <span class="mascot-eye" data-mascot-eye></span>
+        </div>
+      </div>
+      <span class="mascot-shadow" aria-hidden="true"></span>
+    </div>
+  </div>
+</div>
+
+<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Website command palette" hidden>
+  <div class="pal-panel">
+    <div class="pal-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+      <input class="pal-input" id="paletteInput" type="text" placeholder="Type a command or search the site…" autocomplete="off" spellcheck="false" aria-label="Search commands">
+      <span class="kbd">Esc</span>
+    </div>
+    <div class="pal-list" id="paletteList" role="listbox" aria-label="Commands"></div>
+    <div class="pal-foot">
+      <span><span class="kbd">&uarr;</span><span class="kbd">&darr;</span> navigate</span>
+      <span><span class="kbd">Enter</span> run</span>
+      <span><span class="kbd">Ctrl</span><span class="kbd">K</span> toggle</span>
+    </div>
+  </div>
+</div>
+
 <button class="to-top" id="toTop" type="button" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5.5 11.5 6.5-6.5 6.5 6.5"/></svg>
 </button>
 
 <script src="./script.js" defer></script>
+<script src="./mascot.js" defer></script>
 </body>
 </html>

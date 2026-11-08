@@ -4,19 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Desktop Organizer - Smart Windows File Organizer</title>
-<meta name="description" content="Desktop Organizer automatically organizes files, detects duplicates, supports AI-powered file management, and keeps your Windows desktop clean.">
-<meta name="author" content="Suleman Alam">
+<meta name="description" content="Desktop Organizer automatically organizes files, detects duplicates and brings an AI assistant to your Windows desktop. v1.0.2 adds a ChatGPT-style AI workspace, provider profiles for OpenRouter, OpenAI, Google AI Studio, Anthropic, LM Studio and Ollama, plus a Ctrl + K command palette.">
+<meta name="author" content="Ahmed-Coder">
 <meta name="theme-color" content="#06070d">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="dark light">
 <link rel="canonical" href="https://iifamily409-rgb.github.io/Desktop-Organizer/">
 <meta name="robots" content="index, follow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Desktop Organizer">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Desktop Organizer - Smart Windows File Organizer">
-<meta property="og:description" content="Automatically organizes files, detects duplicates, supports AI-powered file management, and keeps your Windows desktop clean.">
+<meta property="og:description" content="Real-time file organization, duplicate cleanup and a local-first AI assistant for Windows 10 and 11. Free, open source, no telemetry.">
 <meta property="og:url" content="https://iifamily409-rgb.github.io/Desktop-Organizer/">
 <meta property="og:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
+<meta property="og:image:alt" content="Desktop Organizer — smart Windows file organizer">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Desktop Organizer - Smart Windows File Organizer">
 <meta name="twitter:description" content="A modern Windows desktop organizer with real-time monitoring, AI assistance, duplicate cleanup and system tray support.">
@@ -27,7 +30,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<script>
+  /* Apply the saved theme before first paint so nothing flashes in the wrong colours. */
+  (function () {
+    var pref = "system";
+    try { pref = window.localStorage.getItem("do-theme") || "system"; } catch (e) {}
+    var light = pref === "light" || (pref !== "dark" && window.matchMedia("(prefers-color-scheme: light)").matches);
+    document.documentElement.setAttribute("data-theme-choice", pref);
+    document.documentElement.setAttribute("data-theme", light ? "light" : "dark");
+  })();
+</script>
 <link rel="stylesheet" href="./style.css">
+<noscript><style>.reveal, .reveal-stagger > *, .term-ex, .mascot-bubble { opacity: 1 !important; transform: none !important; }</style></noscript>
 
 <script type="application/ld+json">
 {
@@ -36,10 +50,17 @@
   "name": "Desktop Organizer",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Windows 10, Windows 11",
-  "softwareVersion": "1.0.1",
+  "softwareVersion": "1.0.2",
+  "softwareRequirements": "Windows 10 or Windows 11, 64-bit",
   "url": "https://iifamily409-rgb.github.io/Desktop-Organizer/",
+  "downloadUrl": "https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe",
+  "codeRepository": "https://github.com/iifamily409-rgb/Desktop-Organizer",
+  "issueTracker": "https://github.com/iifamily409-rgb/Desktop-Organizer/issues",
+  "releaseNotes": "https://github.com/iifamily409-rgb/Desktop-Organizer/releases/tag/v1.0.2",
+  "dateModified": "2026-11-08",
   "description": "Desktop Organizer automatically organizes files, detects duplicates, supports AI-powered file management, and keeps your Windows desktop clean.",
-  "author": { "@type": "Person", "name": "Suleman Alam" },
+  "author": { "@type": "Person", "name": "Ahmed-Coder", "url": "https://github.com/iifamily409-rgb" },
+  "creator": { "@type": "Person", "name": "Ahmed-Coder", "url": "https://github.com/iifamily409-rgb" },
   "license": "https://opensource.org/licenses/MIT",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
 }
@@ -47,6 +68,9 @@
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+
+<div class="fx-glow" id="fxGlow" aria-hidden="true"></div>
+<canvas class="fx-particles" id="fxParticles" aria-hidden="true"></canvas>
 
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
@@ -66,6 +90,7 @@
     <nav class="site-nav" id="siteNav" aria-label="Primary">
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
+        <li><a href="#copilot">Copilot</a></li>
         <li><a href="#screenshots">Screenshots</a></li>
         <li><a href="#how-it-works">How it works</a></li>
         <li><a href="#download">Download</a></li>
@@ -73,16 +98,32 @@
         <li><a href="#faq">FAQ</a></li>
       </ul>
       <div class="nav-mobile-actions">
-        <a class="btn btn-primary btn-block" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download for Windows</a>
+        <a class="btn btn-primary btn-block" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download for Windows</a>
       </div>
     </nav>
 
     <div class="header-actions">
+      <button class="btn btn-ghost btn-sm kbd-hint" id="paletteTrigger" type="button" aria-label="Open the website command palette">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7.5h16"/><path d="M4 12h10"/><path d="M4 16.5h7"/><path d="m17.5 14.5 2.5 2.5-2.5 2.5"/></svg>
+        <span>Search</span>
+        <kbd class="kbd">Ctrl K</kbd>
+      </button>
       <a class="btn btn-ghost btn-sm github-btn" href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">
         <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.94-.01 2.21 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <span>GitHub</span>
       </a>
-      <a class="btn btn-primary btn-sm" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download</a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme">
+        <button type="button" data-theme-btn="system" aria-pressed="false" title="Follow the system theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8.5 20.5h7"/></svg>
+        </button>
+        <button type="button" data-theme-btn="light" aria-pressed="false" title="Light theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+        </button>
+        <button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+        </button>
+      </div>
       <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -105,7 +146,7 @@
       <div class="hero-copy">
         <p class="hero-badge reveal">
           <span class="pulse-dot" aria-hidden="true"></span>
-          v1.0.1 now available for Windows
+          v1.0.2 now available for Windows
         </p>
 
         <h1 class="hero-title reveal delay-1">
@@ -119,7 +160,7 @@
         </p>
 
         <div class="hero-actions reveal delay-3">
-          <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">
+          <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">
             <svg class="win-glyph" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M0 1.9 6.5.84v6.7H0V1.9Zm0 12.2 6.5 1.06V8.46H0v5.64ZM7.2 8.46 16 7.24v7.9l-8.8-1.24V8.46Zm0-7.6L16 0v6.3l-8.8.15V.86Z"/></svg>
             Download for Windows
           </a>
@@ -185,6 +226,145 @@
           <span class="fc-icon fc-purple">AI</span>
           <div><strong>“Sort my downloads by type”</strong><small>Done in 1.2s</small></div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DESKTOP COPILOT ============ -->
+  <section class="section" id="copilot" data-mascot-key="copilot">
+    <div class="container copilot-grid">
+      <div class="copilot-copy reveal">
+        <p class="eyebrow">Desktop Copilot</p>
+        <h2>Meet <span class="gradient-text">Desktop Copilot</span></h2>
+        <p class="section-sub">
+          A ChatGPT-style assistant that already knows your folders. Mention a place with
+          <code>@</code>, ask for what you want, and review the plan before a single file moves.
+        </p>
+        <ul class="copilot-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+            <span><strong>Context-aware prompts</strong> — <code>@Desktop</code>, <code>@Downloads</code>, <code>@Documents</code> scope the request to a watched folder.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+            <span><strong>Preview before action</strong> — every plan is labelled Read only, Launches something, Changes files or Deletes files.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+            <span><strong>Real chat workflow</strong> — sidebar, search, pinning, rename, archive, auto titles and export to TXT, Markdown, PDF or JSON.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+            <span><strong>Bring your own model</strong> — OpenRouter, OpenAI, Google AI Studio, Anthropic, LM Studio, Ollama or any custom endpoint.</span>
+          </li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="./documentation.html#desktop-copilot">Read the Copilot guide</a>
+          <a class="btn btn-secondary btn-lg" href="#palette-demo">See the command palette</a>
+        </div>
+      </div>
+
+      <div class="copilot-demo reveal delay-2" data-parallax="0.035">
+        <div class="term" aria-label="Desktop Copilot example session">
+          <div class="term-bar">
+            <span class="term-dot live" aria-hidden="true"></span>
+            <span class="term-dot" aria-hidden="true"></span>
+            <span class="term-dot" aria-hidden="true"></span>
+            <span class="term-title">copilot · local engine 127.0.0.1</span>
+          </div>
+          <div class="term-body">
+            <div class="term-ex">
+              <p class="term-line"><span class="term-prompt">&#8250;</span><span class="term-cmd">Find duplicates in <span class="term-mention">@Downloads</span></span></p>
+              <p class="term-out">scanned 4,182 files &#183; compared contents in 1 MB chunks</p>
+              <p class="term-out"><span class="term-ok">3 groups matched</span> &#183; <strong>1.4 GB reclaimable</strong> &#183; nothing moved yet</p>
+            </div>
+            <div class="term-ex">
+              <p class="term-line"><span class="term-prompt">&#8250;</span><span class="term-cmd">Show PDFs in <span class="term-mention">@Documents</span></span></p>
+              <p class="term-out">218 PDFs &#183; newest first</p>
+              <p class="term-out"><strong>invoice-november.pdf</strong> &#183; 2 pages &#183; modified 6 Nov</p>
+            </div>
+            <div class="term-ex">
+              <p class="term-line"><span class="term-prompt">&#8250;</span><span class="term-cmd">Analyze <span class="term-mention">@Pictures</span></span></p>
+              <p class="term-out">1,940 images &#183; 12.6 GB total</p>
+              <p class="term-out"><span class="term-ok">ready</span> &#183; 412 screenshots could move to <strong>Images/Screenshots</strong></p>
+            </div>
+            <div class="term-ex">
+              <p class="term-line"><span class="term-prompt">&#8250;</span><span class="term-cmd">Clean <span class="term-mention">@Desktop</span></span></p>
+              <p class="term-out">plan: 34 files &#8594; Documents, Images, Installers, Others</p>
+              <p class="term-out"><span class="term-ok">awaiting confirmation</span> &#183; undo available for 90 days</p>
+              <p class="term-line"><span class="term-cursor" aria-hidden="true"></span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIVE PRODUCT DEMOS ============ -->
+  <section class="section section-alt" id="demos" data-mascot-key="demos">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">Live demos</p>
+        <h2>Hover a card, watch it work</h2>
+        <p class="section-sub">Four miniature replays of the screens you will actually use. No video, no screenshots to wait for &#8212; just the interface, moving.</p>
+      </header>
+
+      <div class="demo-grid reveal-stagger">
+        <article class="demo-card reveal" tabindex="0" data-mascot-react="Searching your chats, not your files">
+          <div class="demo-head">
+            <h3>Chat Search</h3>
+            <span class="demo-badge">instant</span>
+          </div>
+          <p>Every conversation you have had with the assistant is searchable &#8212; by text, by folder, by provider.</p>
+          <div class="demo-stage" aria-hidden="true">
+            <div class="demo-row"><span class="dot"></span>query: <b>&#8220;duplicate invoices&#8221;</b></div>
+            <div class="demo-row">3 chats &#183; 12 messages matched</div>
+            <div class="demo-row">pinned: <b>Q3 expense tidy-up</b></div>
+            <div class="demo-bar"><i></i></div>
+          </div>
+        </article>
+
+        <article class="demo-card reveal" tabindex="0" data-mascot-react="Keys stay on this machine">
+          <div class="demo-head">
+            <h3>Provider Profiles</h3>
+            <span class="demo-badge">7 kinds</span>
+          </div>
+          <p>Save a profile per provider and switch between them mid-conversation without losing a single chat.</p>
+          <div class="demo-stage" aria-hidden="true">
+            <div class="demo-row"><span class="dot"></span><b>OpenRouter</b> &#183; active</div>
+            <div class="demo-row">Ollama &#183; local &#183; tested</div>
+            <div class="demo-row">custom endpoint &#183; key stored locally</div>
+            <div class="demo-bar"><i></i></div>
+          </div>
+        </article>
+
+        <article class="demo-card reveal" tabindex="0" data-mascot-react="Copilot knows your folders">
+          <div class="demo-head">
+            <h3>Desktop Copilot</h3>
+            <span class="demo-badge">@mentions</span>
+          </div>
+          <p>Ask in plain language, get a plan with per-file previews, then confirm &#8212; or let it explain what it would have done.</p>
+          <div class="demo-stage" aria-hidden="true">
+            <div class="demo-row"><span class="dot"></span>&#8250; tidy <b>@Desktop</b> screenshots</div>
+            <div class="demo-row">plan: 14 moves &#183; 0 deletions</div>
+            <div class="demo-row">class: <b>Changes files</b></div>
+            <div class="demo-bar"><i></i></div>
+          </div>
+        </article>
+
+        <article class="demo-card reveal" tabindex="0" id="paletteTriggerCard" data-mascot-react="Try it: press Ctrl + K">
+          <div class="demo-head">
+            <h3>Command Palette</h3>
+            <span class="demo-badge">Ctrl K</span>
+          </div>
+          <p>The same palette that ships inside the app is wired into this website. Press <span class="kbd">Ctrl</span> <span class="kbd">K</span> right now.</p>
+          <div class="demo-stage" aria-hidden="true">
+            <div class="demo-row"><span class="dot"></span>Organize Desktop</div>
+            <div class="demo-row">Find duplicates</div>
+            <div class="demo-row">Switch Provider</div>
+            <div class="demo-bar"><i></i></div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -365,6 +545,149 @@
     </div>
   </section>
 
+  <!-- ============ AI PROVIDERS ============ -->
+  <section class="section" id="providers" data-mascot-key="providers">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">Bring your own model</p>
+        <h2>Seven providers. One assistant.</h2>
+        <p class="section-sub">
+          Desktop Organizer is provider-neutral. Save a profile for each service you use, keep the keys on this
+          machine, and switch mid-conversation without losing your history.
+        </p>
+      </header>
+
+      <div class="prov-grid reveal-stagger">
+        <article class="prov-card reveal" tabindex="0">
+          <div class="prov-top">
+            <span class="prov-mark c1" aria-hidden="true">OR</span>
+            <span><span class="prov-name">OpenRouter</span><span class="prov-meta">hosted &#183; multi-model</span></span>
+          </div>
+          <p>One key, hundreds of models. Pick a model per profile and change it whenever a cheaper one wins.</p>
+          <div class="prov-chips"><span>Model picker</span><span>Streaming</span><span>Key stored locally</span></div>
+        </article>
+
+        <article class="prov-card reveal" tabindex="0">
+          <div class="prov-top">
+            <span class="prov-mark c2" aria-hidden="true">AI</span>
+            <span><span class="prov-name">OpenAI</span><span class="prov-meta">hosted &#183; OpenAI-compatible</span></span>
+          </div>
+          <p>The standard chat surface. Point it at the API key you already have and choose a model per profile.</p>
+          <div class="prov-chips"><span>Chat</span><span>Attachments</span><span>Test connection</span></div>
+        </article>
+
+        <article class="prov-card reveal" tabindex="0">
+          <div class="prov-top">
+            <span class="prov-mark c3" aria-hidden="true">GA</span>
+            <span><span class="prov-name">Google AI Studio</span><span class="prov-meta">hosted &#183; Gemini</span></span>
+          </div>
+          <p>Gemini models through the AI Studio key, with the same preview-and-confirm safety classes.</p>
+          <div class="prov-chips"><span>Gemini</span><span>Long context</span><span>Profiles</span></div>
+        </article>
+
+        <article class="prov-card reveal" tabindex="0">
+          <div class="prov-top">
+            <span class="prov-mark c4" aria-hidden="true">AN</span>
+            <span><span class="prov-name">Anthropic</span><span class="prov-meta">hosted &#183; Claude</span></span>
+          </div>
+          <p>Claude models for longer instructions and careful file plans, configured per saved profile.</p>
+          <div class="prov-chips"><span>Claude</span><span>Streaming</span><span>Duplicate-safe</span></div>
+        </article>
+
+        <article class="prov-card reveal" tabindex="0">
+          <div class="prov-top">
+            <span class="prov-mark c5" aria-hidden="true">LM</span>
+            <span><span class="prov-name">LM Studio</span><span class="prov-meta">local &#183; nothing leaves the PC</span></span>
+          </div>
+          <p>Run a local model server on your own machine and point the assistant at it. No account, no upload.</p>
+          <div class="prov-chips"><span>Offline</span><span>Local only</span><span>No key needed</span></div>
+        </article>
+
+        <article class="prov-card reveal" tabindex="0">
+          <div class="prov-top">
+            <span class="prov-mark c6" aria-hidden="true">OL</span>
+            <span><span class="prov-name">Ollama</span><span class="prov-meta">local &#183; model library</span></span>
+          </div>
+          <p>Pull a model once, then keep the whole assistant on the machine &#8212; handy for sensitive folders.</p>
+          <div class="prov-chips"><span>Offline</span><span>Local only</span><span>Model tags</span></div>
+        </article>
+
+        <article class="prov-card reveal" tabindex="0">
+          <div class="prov-top">
+            <span class="prov-mark c7" aria-hidden="true">CU</span>
+            <span><span class="prov-name">Custom Provider</span><span class="prov-meta">any OpenAI-compatible endpoint</span></span>
+          </div>
+          <p>Your gateway, your intranet model, your proxy. Set the base URL, the key and the model id yourself.</p>
+          <div class="prov-chips"><span>Base URL</span><span>Headers</span><span>Test before save</span></div>
+        </article>
+      </div>
+
+      <p class="prov-note reveal">
+        <strong>Profile support:</strong>
+        <span>multiple saved profiles</span>
+        <span>switch without data loss</span>
+        <span>per-profile model selection</span>
+        <span>connection test</span>
+        <span>duplicate &amp; delete profiles</span>
+        <span>API keys stored locally only</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ COMMAND PALETTE ============ -->
+  <section class="section section-alt" id="palette-demo" data-mascot-key="palette">
+    <div class="container copilot-grid">
+      <div class="copilot-copy reveal">
+        <p class="eyebrow">Command palette</p>
+        <h2>Press <span class="gradient-text">Ctrl + K</span> and type what you want</h2>
+        <p class="section-sub">
+          The app ships a keyboard-first palette for the things you repeat every day. This website runs the same
+          one &#8212; jump to a section, open a page, switch theme or start the download without touching the mouse.
+        </p>
+        <ul class="copilot-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+            <span>Fuzzy search across commands, pages and sections.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+            <span>Arrow keys or <span class="kbd">Tab</span> to move, <span class="kbd">Enter</span> to run, <span class="kbd">Esc</span> to close.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12.5 9 17.5 20 6.5"/></svg>
+            <span>Works on the documentation, privacy, terms and known-issues pages too.</span>
+          </li>
+        </ul>
+        <div class="hero-actions">
+          <button class="btn btn-primary btn-lg" type="button" data-palette-open>Open the palette</button>
+          <a class="btn btn-secondary btn-lg" href="./documentation.html#command-palette">Palette documentation</a>
+        </div>
+      </div>
+
+      <div class="reveal delay-2">
+        <div class="pal-demo" id="paletteDemo" aria-label="Command palette preview">
+          <div class="pal-demo-head">
+            <strong>&#8962; search commands&#8230;</strong>
+            <span class="kbd">Ctrl K</span>
+          </div>
+          <ul class="pal-demo-list">
+            <li class="pal-demo-item" data-demo-item><span>Organize Desktop</span><span class="pal-key">Organize</span></li>
+            <li class="pal-demo-item" data-demo-item><span>Open Downloads</span><span class="pal-key">Folders</span></li>
+            <li class="pal-demo-item" data-demo-item><span>Find Duplicates</span><span class="pal-key">Cleanup</span></li>
+            <li class="pal-demo-item" data-demo-item><span>Switch Provider</span><span class="pal-key">AI</span></li>
+            <li class="pal-demo-item" data-demo-item><span>New Chat</span><span class="pal-key">AI</span></li>
+            <li class="pal-demo-item" data-demo-item><span>Open Settings</span><span class="pal-key">Go to</span></li>
+          </ul>
+          <div class="pal-demo-foot">
+            <span><span class="kbd">&uarr;</span><span class="kbd">&darr;</span> navigate</span>
+            <span><span class="kbd">Enter</span> run</span>
+            <span>in-app: 11 commands, 5 groups</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ HOW IT WORKS ============ -->
   <section class="section" id="how-it-works">
     <div class="container">
@@ -412,7 +735,7 @@
       <div class="download-panel reveal">
         <div class="download-copy">
           <p class="eyebrow">Download</p>
-          <h2>Get Desktop Organizer <span class="version-chip">v1.0.1</span></h2>
+          <h2>Get Desktop Organizer <span class="version-chip">v1.0.2</span></h2>
           <p class="section-sub">
             Free, Windows-native installer. Runs fully offline for monitoring, organizing and duplicate cleanup.
           </p>
@@ -433,14 +756,14 @@
           </ul>
 
           <div class="download-actions">
-            <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">
+            <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M4.5 19.5h15"/></svg>
               Download Setup
             </a>
             <a class="btn btn-secondary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases" target="_blank" rel="noopener">GitHub Releases</a>
           </div>
           <p class="download-note">
-            <code>Desktop-Organizer-Setup-v1.0.1.exe</code> · 98.2 MB · SHA-256 <code>125436D4…57572D</code><br>
+            <code>Desktop-Organizer-Setup-v1.0.2.exe</code> · 108.7 MB · SHA-256 <code>4BFB1186…47E36</code><br>
             The build is not code-signed yet, so SmartScreen may show a warning on first run — choose
             <strong>More info → Run anyway</strong>. Details in
             <a href="./known-issues.html">Known issues</a>.
@@ -452,13 +775,13 @@
             <span>Release</span>
             <span class="dc-badge">Stable</span>
           </div>
-          <p class="dc-version">v1.0.1</p>
+          <p class="dc-version">v1.0.2</p>
           <dl class="dc-list">
-            <div><dt>Version</dt><dd>v1.0.1</dd></div>
-            <div><dt>Filename</dt><dd class="dc-file">Desktop-Organizer-Setup-v1.0.1.exe</dd></div>
+            <div><dt>Version</dt><dd>v1.0.2</dd></div>
+            <div><dt>Filename</dt><dd class="dc-file">Desktop-Organizer-Setup-v1.0.2.exe</dd></div>
             <div><dt>Platform</dt><dd>Windows x64</dd></div>
             <div><dt>Requires</dt><dd>Windows 10 / 11</dd></div>
-            <div><dt>Installer</dt><dd>NSIS Setup · 98.2 MB</dd></div>
+            <div><dt>Installer</dt><dd>NSIS Setup · 108.7 MB</dd></div>
             <div><dt>Uninstall</dt><dd>Apps &amp; features</dd></div>
             <div><dt>License</dt><dd>MIT</dd></div>
             <div><dt>Telemetry</dt><dd>None</dd></div>
@@ -467,6 +790,93 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/></svg>
           </a>
         </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIVE METRICS ============ -->
+  <section class="section section-alt" id="metrics" data-mascot-key="metrics">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">By the numbers</p>
+        <h2>What the app does all day</h2>
+      </header>
+
+      <div class="metrics reveal-stagger">
+        <div class="metric reveal">
+          <p class="metric-value"><span data-count="128400">0</span></p>
+          <p class="metric-label">Files organized</p>
+          <p class="metric-sub">categorised across watched folders since launch</p>
+        </div>
+        <div class="metric reveal">
+          <p class="metric-value"><span data-count="9400">0</span><span> GB</span></p>
+          <p class="metric-label">Space reclaimed</p>
+          <p class="metric-sub">duplicates and clutter sent to the Recycle Bin</p>
+        </div>
+        <div class="metric reveal">
+          <p class="metric-value"><span data-count="21760">0</span></p>
+          <p class="metric-label">Duplicate files found</p>
+          <p class="metric-sub">matched by content, never by name alone</p>
+        </div>
+        <div class="metric reveal">
+          <p class="metric-value"><span data-count="7">0</span></p>
+          <p class="metric-label">Supported AI providers</p>
+          <p class="metric-sub">hosted and local, behind saved profiles</p>
+        </div>
+      </div>
+
+      <p class="metric-note reveal">
+        Sample figures for illustration. Desktop Organizer collects no telemetry, so it cannot measure what other
+        people&#8217;s machines did &#8212; your own totals are on the Dashboard, locally.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ TRUST ============ -->
+  <section class="section" id="trust" data-mascot-key="trust">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">Trust</p>
+        <h2>Local first, and it stays that way</h2>
+      </header>
+
+      <div class="trust reveal-stagger">
+        <div class="trust-item reveal">
+          <span class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5A2.5 2.5 0 0 1 6.5 5h3.1c.66 0 1.28.26 1.75.72L12.9 7.3c.47.46 1.09.72 1.75.72h3.9A2.5 2.5 0 0 1 21 10.5v6A2.5 2.5 0 0 1 18.5 19h-12A2.5 2.5 0 0 1 4 16.5v-9Z"/></svg>
+          </span>
+          <span><span class="trust-title">Local first</span><span class="trust-text">The engine runs on 127.0.0.1. Files, history and settings live in your user profile.</span></span>
+        </div>
+        <div class="trust-item reveal">
+          <span class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5 5 6.2v5.3c0 4.3 2.9 7.6 7 9.5 4.1-1.9 7-5.2 7-9.5V6.2L12 3.5Z"/><path d="m9.2 12.4 2 2 3.6-3.9"/></svg>
+          </span>
+          <span><span class="trust-title">Private by default</span><span class="trust-text">No account, no activation, no analytics SDK, no crash reporting, no device identifiers.</span></span>
+        </div>
+        <div class="trust-item reveal">
+          <span class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5 9 17l10.5-10.5"/><path d="M14.5 5.5 19 10"/></svg>
+          </span>
+          <span><span class="trust-title">Custom AI providers</span><span class="trust-text">Bring any OpenAI-compatible endpoint, or keep it fully local with LM Studio or Ollama.</span></span>
+        </div>
+        <div class="trust-item reveal">
+          <span class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.6 10.5 4.6v7.1H3.5z"/><path d="M12 4.4 20.5 3.2v8.5H12z"/><path d="M3.5 13.1h7v7.1l-7-1z"/><path d="M12 13.1h8.5v8.5L12 20.4z"/></svg>
+          </span>
+          <span><span class="trust-title">Windows native</span><span class="trust-text">Built for Windows 10 and 11: tray, notifications, logon startup and a real uninstaller.</span></span>
+        </div>
+        <div class="trust-item reveal">
+          <span class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v9"/><path d="m8 8.5 4-4 4 4"/><path d="M4.5 15.5v3a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/><path d="m4.5 4.5 15 15"/></svg>
+          </span>
+          <span><span class="trust-title">No hidden uploads</span><span class="trust-text">Nothing leaves your machine unless you ask the assistant something and configure a provider.</span></span>
+        </div>
+        <div class="trust-item reveal">
+          <span class="trust-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10"/><path d="M12 14v2.5"/></svg>
+          </span>
+          <span><span class="trust-title">No bundled API keys</span><span class="trust-text">The installer ships with zero credentials. Keys you add are stored locally, per profile.</span></span>
+        </div>
       </div>
     </div>
   </section>
@@ -481,8 +891,50 @@
 
       <article class="release reveal">
         <div class="release-head">
+          <h3>Version 1.0.2</h3>
+          <div class="release-tags"><span class="tag tag-latest">Latest</span><span class="tag">AI experience overhaul</span><span class="tag">8 Nov 2026</span></div>
+        </div>
+        <p class="release-lead">New</p>
+        <ul class="release-list">
+          <li>ChatGPT-inspired AI workspace</li>
+          <li>Full chat sidebar with search</li>
+          <li>Chat rename, archive and pinning</li>
+          <li>Auto-generated chat titles</li>
+          <li>Chat export: TXT, Markdown, PDF, JSON</li>
+          <li>File attachments in AI chat</li>
+          <li>Multiple saved provider profiles</li>
+          <li>OpenRouter, OpenAI, Google AI Studio, Anthropic</li>
+          <li>LM Studio, Ollama and custom endpoints</li>
+          <li>Provider switching without data loss</li>
+          <li>Ctrl + K command palette</li>
+          <li>Improved privacy controls</li>
+        </ul>
+        <p class="release-lead">Improved</p>
+        <ul class="release-list">
+          <li>Cleaner layout and typography</li>
+          <li>Better message bubbles</li>
+          <li>Faster chat workflow</li>
+          <li>Provider management</li>
+          <li>Settings organisation</li>
+          <li>Dark theme</li>
+          <li>Modernised AI interface</li>
+        </ul>
+        <p class="release-lead">Fixed</p>
+        <ul class="release-list">
+          <li>Download organisation timing</li>
+          <li>Notification spam</li>
+          <li>Startup registration issues</li>
+          <li>Duplicate file safety</li>
+          <li>Real-time monitoring edge cases</li>
+          <li>Installer reliability</li>
+          <li>Uninstall data retention</li>
+        </ul>
+      </article>
+
+      <article class="release reveal">
+        <div class="release-head">
           <h3>Version 1.0.1</h3>
-          <div class="release-tags"><span class="tag tag-latest">Latest</span><span class="tag">Stability release</span><span class="tag">7 Nov 2026</span></div>
+          <div class="release-tags"><span class="tag">Stability release</span><span class="tag">7 Nov 2026</span></div>
         </div>
         <p class="release-lead">Fixed</p>
         <ul class="release-list">
@@ -522,6 +974,71 @@
           <li>Undo support</li>
         </ul>
       </article>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="section section-alt" id="reviews" data-mascot-key="reviews">
+    <div class="container">
+      <header class="section-head reveal">
+        <p class="eyebrow">Reviews</p>
+        <h2>What people tell us</h2>
+        <p class="section-sub">Early feedback from testers who run it on real desktops and Downloads folders.</p>
+      </header>
+
+      <div class="quotes reveal-stagger">
+        <figure class="quote-card reveal">
+          <div class="quote-stars" role="img" aria-label="Rated 5 out of 5">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+          </div>
+          <blockquote class="quote-text">&#8220;It left my half-finished downloads alone, which is exactly what every other tidy-up tool got wrong. The undo history is what sold me.&#8221;</blockquote>
+          <figcaption class="quote-who">
+            <span class="quote-avatar" aria-hidden="true">R</span>
+            <span><span class="quote-name">Reviewer placeholder</span><span class="quote-role">Freelance designer, Windows 11</span></span>
+          </figcaption>
+        </figure>
+
+        <figure class="quote-card reveal">
+          <div class="quote-stars" role="img" aria-label="Rated 5 out of 5">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+          </div>
+          <blockquote class="quote-text">&#8220;Running it against Ollama means the assistant never sees my client folders. Switching profiles between work and personal models takes one keystroke.&#8221;</blockquote>
+          <figcaption class="quote-who">
+            <span class="quote-avatar" aria-hidden="true">K</span>
+            <span><span class="quote-name">Reviewer placeholder</span><span class="quote-role">Backend engineer, Windows 10</span></span>
+          </figcaption>
+        </figure>
+
+        <figure class="quote-card reveal">
+          <div class="quote-stars" role="img" aria-label="Rated 4 out of 5">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m12 3.5 2.6 5.5 6 .8-4.4 4.2 1.1 6-5.3-2.9-5.3 2.9 1.1-6L3.4 9.8l6-.8Z"/></svg>
+          </div>
+          <blockquote class="quote-text">&#8220;Duplicate cleanup gave me 40 GB back on a machine I had given up on. I would still like per-folder scheduling, and the tray icon hides itself on my laptop.&#8221;</blockquote>
+          <figcaption class="quote-who">
+            <span class="quote-avatar" aria-hidden="true">M</span>
+            <span><span class="quote-name">Reviewer placeholder</span><span class="quote-role">Photographer, Windows 11</span></span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="metric-note reveal">
+        These three quotes are illustrative placeholders written for this layout, not submitted reviews. Real reviews
+        are welcome on the
+        <a href="https://github.com/iifamily409-rgb/Desktop-Organizer/issues" target="_blank" rel="noopener">issue tracker</a>
+        and will replace them verbatim.
+      </p>
     </div>
   </section>
 
@@ -589,7 +1106,7 @@
         <h2>Stop scrolling past your own desktop icons.</h2>
         <p>Install Desktop Organizer once and let it keep every monitored folder tidy from then on.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download for Windows</a>
+          <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download for Windows</a>
           <a class="btn btn-secondary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">Star on GitHub</a>
         </div>
       </div>
@@ -610,13 +1127,14 @@
         <span class="brand-text"><span class="brand-name">Desktop Organizer</span></span>
       </a>
       <p>A modern Windows desktop organizer that keeps files categorized, duplicates cleaned, and your workspace calm.</p>
-      <p class="developer">Developer: <a href="https://github.com/iifamily409-rgb" target="_blank" rel="noopener">Suleman Alam</a></p>
+      <p class="developer">Built by <a href="https://github.com/iifamily409-rgb" target="_blank" rel="noopener">Ahmed-Coder</a></p>
     </div>
 
     <nav class="footer-col" aria-label="Product">
       <h4>Product</h4>
       <ul>
         <li><a href="#features">Features</a></li>
+        <li><a href="#copilot">Copilot</a></li>
         <li><a href="#screenshots">Screenshots</a></li>
         <li><a href="#how-it-works">How it works</a></li>
       </ul>
@@ -626,7 +1144,7 @@
       <h4>Resources</h4>
       <ul>
         <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download</a></li>
         <li><a href="#changelog">Release Notes</a></li>
         <li><a href="./documentation.html">Documentation</a></li>
       </ul>
@@ -657,10 +1175,45 @@
   </div>
 </footer>
 
+<div class="mascot" id="mascot" role="img" aria-label="Desktop Organizer copilot mascot">
+  <p class="mascot-bubble" data-mascot-bubble aria-live="polite"></p>
+  <div class="mascot-stage" data-mascot-stage>
+    <div class="mascot-shell" data-mascot-shell>
+      <span class="mascot-ring" aria-hidden="true"></span>
+      <span class="mascot-ring b" aria-hidden="true"></span>
+      <span class="mascot-antenna" aria-hidden="true"></span>
+      <div class="mascot-core" aria-hidden="true">
+        <div class="mascot-face">
+          <span class="mascot-eye" data-mascot-eye></span>
+          <span class="mascot-eye" data-mascot-eye></span>
+        </div>
+      </div>
+      <span class="mascot-shadow" aria-hidden="true"></span>
+    </div>
+  </div>
+</div>
+
+<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Website command palette" hidden>
+  <div class="pal-panel">
+    <div class="pal-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+      <input class="pal-input" id="paletteInput" type="text" placeholder="Type a command or search the site…" autocomplete="off" spellcheck="false" aria-label="Search commands">
+      <span class="kbd">Esc</span>
+    </div>
+    <div class="pal-list" id="paletteList" role="listbox" aria-label="Commands"></div>
+    <div class="pal-foot">
+      <span><span class="kbd">&uarr;</span><span class="kbd">&darr;</span> navigate</span>
+      <span><span class="kbd">Enter</span> run</span>
+      <span><span class="kbd">Ctrl</span><span class="kbd">K</span> toggle</span>
+    </div>
+  </div>
+</div>
+
 <button class="to-top" id="toTop" type="button" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5.5 11.5 6.5-6.5 6.5 6.5"/></svg>
 </button>
 
 <script src="./script.js" defer></script>
+<script src="./mascot.js" defer></script>
 </body>
 </html>

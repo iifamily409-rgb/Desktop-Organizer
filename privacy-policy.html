@@ -4,22 +4,25 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacy Policy - Desktop Organizer</title>
-<meta name="description" content="Privacy Policy for Desktop Organizer: your files stay on your PC, nothing is sold or uploaded, AI settings remain local unless you configure a provider, and there is no telemetry.">
-<meta name="author" content="Suleman Alam">
+<meta name="description" content="Desktop Organizer privacy policy: files stay on your PC, API keys and provider profiles are stored locally, there are no hidden cloud uploads, no bundled credentials and no telemetry.">
+<meta name="author" content="Ahmed-Coder">
 <meta name="theme-color" content="#06070d">
-<meta name="color-scheme" content="dark">
+<meta name="color-scheme" content="dark light">
 <link rel="canonical" href="https://iifamily409-rgb.github.io/Desktop-Organizer/privacy-policy.html">
 <meta name="robots" content="index, follow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Desktop Organizer">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="Desktop Organizer Privacy Policy">
-<meta property="og:description" content="Your files stay on your PC. No data is sold, no hidden cloud uploads, no telemetry, and AI settings remain local unless you configure a provider.">
+<meta property="og:description" content="Local-first by design: your files, history and API keys stay on your machine, with no telemetry and no hidden uploads.">
 <meta property="og:url" content="https://iifamily409-rgb.github.io/Desktop-Organizer/privacy-policy.html">
 <meta property="og:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
+<meta property="og:image:alt" content="Desktop Organizer — smart Windows file organizer">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Desktop Organizer Privacy Policy">
-<meta name="twitter:description" content="Your files stay on your PC. No data is sold, no hidden cloud uploads, no telemetry, and AI settings remain local unless you configure a provider.">
+<meta name="twitter:description" content="Local-first by design: your files, history and API keys stay on your machine, with no telemetry and no hidden uploads.">
 <meta name="twitter:image" content="https://iifamily409-rgb.github.io/Desktop-Organizer/assets/og-image.png">
 
 <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
@@ -27,10 +30,47 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<script>
+  /* Apply the saved theme before first paint so nothing flashes in the wrong colours. */
+  (function () {
+    var pref = "system";
+    try { pref = window.localStorage.getItem("do-theme") || "system"; } catch (e) {}
+    var light = pref === "light" || (pref !== "dark" && window.matchMedia("(prefers-color-scheme: light)").matches);
+    document.documentElement.setAttribute("data-theme-choice", pref);
+    document.documentElement.setAttribute("data-theme", light ? "light" : "dark");
+  })();
+</script>
 <link rel="stylesheet" href="./style.css">
+<noscript><style>.reveal, .reveal-stagger > *, .term-ex, .mascot-bubble { opacity: 1 !important; transform: none !important; }</style></noscript>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Privacy Policy",
+  "url": "https://iifamily409-rgb.github.io/Desktop-Organizer/privacy-policy.html",
+  "description": "Desktop Organizer privacy policy: files stay on your PC, API keys and provider profiles are stored locally, there are no hidden cloud uploads, no bundled credentials and no telemetry.",
+  "isPartOf": { "@type": "WebSite", "name": "Desktop Organizer", "url": "https://iifamily409-rgb.github.io/Desktop-Organizer/" },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "Desktop Organizer",
+    "softwareVersion": "1.0.2",
+    "operatingSystem": "Windows 10, Windows 11",
+    "downloadUrl": "https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe",
+    "codeRepository": "https://github.com/iifamily409-rgb/Desktop-Organizer",
+    "author": { "@type": "Person", "name": "Ahmed-Coder", "url": "https://github.com/iifamily409-rgb" }
+  },
+  "publisher": { "@type": "Person", "name": "Ahmed-Coder", "url": "https://github.com/iifamily409-rgb" },
+  "dateModified": "2026-11-08"
+}
+</script>
 </head>
+
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+
+<div class="fx-glow" id="fxGlow" aria-hidden="true"></div>
+<canvas class="fx-particles" id="fxParticles" aria-hidden="true"></canvas>
 
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
@@ -50,6 +90,7 @@
     <nav class="site-nav" id="siteNav" aria-label="Primary">
       <ul class="nav-links">
         <li><a href="./index.html#features">Features</a></li>
+        <li><a href="./index.html#copilot">Copilot</a></li>
         <li><a href="./index.html#screenshots">Screenshots</a></li>
         <li><a href="./index.html#how-it-works">How it works</a></li>
         <li><a href="./index.html#download">Download</a></li>
@@ -57,16 +98,32 @@
         <li><a href="./index.html#faq">FAQ</a></li>
       </ul>
       <div class="nav-mobile-actions">
-        <a class="btn btn-primary btn-block" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download for Windows</a>
+        <a class="btn btn-primary btn-block" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download for Windows</a>
       </div>
     </nav>
 
     <div class="header-actions">
+      <button class="btn btn-ghost btn-sm kbd-hint" id="paletteTrigger" type="button" aria-label="Open the website command palette">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7.5h16"/><path d="M4 12h10"/><path d="M4 16.5h7"/><path d="m17.5 14.5 2.5 2.5-2.5 2.5"/></svg>
+        <span>Search</span>
+        <kbd class="kbd">Ctrl K</kbd>
+      </button>
       <a class="btn btn-ghost btn-sm github-btn" href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">
-        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.82 3.63-3.55 3.82.28.24.53.72.53 1.45v2.15c0 .2.13.45.54.37A8 8 0 0 1 0 8Z"/></svg>
+        <svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.94-.01 2.21 0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
         <span>GitHub</span>
       </a>
-      <a class="btn btn-primary btn-sm" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download</a>
+      <a class="btn btn-primary btn-sm" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download</a>
+      <div class="theme-switch" role="group" aria-label="Colour theme">
+        <button type="button" data-theme-btn="system" aria-pressed="false" title="Follow the system theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="12.5" rx="2"/><path d="M8.5 20.5h7"/></svg>
+        </button>
+        <button type="button" data-theme-btn="light" aria-pressed="false" title="Light theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>
+        </button>
+        <button type="button" data-theme-btn="dark" aria-pressed="false" title="Dark theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+        </button>
+      </div>
       <button class="nav-toggle" id="navToggle" type="button" aria-label="Open navigation menu" aria-controls="siteNav" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -75,147 +132,277 @@
 </header>
 
 <main id="main">
-  <section class="page-hero">
-    <div class="container narrow">
-      <p class="eyebrow">Legal</p>
-      <h1 class="page-title">Privacy Policy</h1>
-      <p class="page-lead">Desktop Organizer works on your files, so it should be obvious what it does with them and what it knows about you. Short answer: everything stays on your PC, and nothing is sold, uploaded or reported.</p>
-      <div class="page-stamp">
-        <span class="tag">Applies to v1.0.1</span>
-        <span class="tag">Last updated 7 Nov 2026</span>
-      </div>
+
+<section class="page-hero" data-mascot-key="privacy">
+  <div class="container narrow">
+    <p class="eyebrow">Legal</p>
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-lead">
+      Desktop Organizer is a local file tool: it reads the folders you tell it to read, writes its own records into your Windows user profile, and sends nothing to
+      us. This policy states what is stored, what leaves your machine when you use AI features, and what this website does with a visitor's connection.
+    </p>
+    <div class="page-stamp">
+      <span class="tag">Version 1.0.2</span>
+      <span class="tag">Effective 8 November 2026</span>
+      <span class="tag">Windows 10 / 11, 64-bit</span>
+      <span class="tag tag-ok">No telemetry, no analytics, no account</span>
+      <span class="tag tag-warn">AI calls go to the provider you configure</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="page-body">
-    <div class="container doc-layout">
+<section class="page-body" data-mascot-key="privacy">
+  <div class="container doc-layout">
 
-      <aside class="doc-toc" aria-label="On this page">
-        <h4>Contents</h4>
-        <ol>
-          <li><a href="#your-files">Your files stay yours</a></li>
-          <li><a href="#what-is-stored">What the app stores</a></li>
-          <li><a href="#cloud">No hidden cloud uploads</a></li>
-          <li><a href="#ai">AI settings and prompts</a></li>
-          <li><a href="#telemetry">Telemetry</a></li>
-          <li><a href="#website">This website</a></li>
-          <li><a href="#children">Children's privacy</a></li>
-          <li><a href="#changes">Changes and contact</a></li>
-        </ol>
-      </aside>
+    <aside class="doc-toc" aria-label="On this page">
+      <h4>Contents</h4>
+      <ol>
+        <li><a href="#your-files-stay-local">Your files stay on your PC</a></li>
+        <li><a href="#what-the-app-stores">What the app stores locally</a></li>
+        <li><a href="#no-hidden-cloud-uploads">No hidden cloud uploads</a></li>
+        <li><a href="#api-keys-and-profiles">API keys and provider profiles</a></li>
+        <li><a href="#ai-prompts-and-providers">AI prompts and third-party providers</a></li>
+        <li><a href="#telemetry">Telemetry</a></li>
+        <li><a href="#this-website">This website</a></li>
+        <li><a href="#childrens-privacy">Children's privacy</a></li>
+        <li><a href="#changes-and-contact">Changes and contact</a></li>
+      </ol>
+    </aside>
 
-      <div class="doc-content prose">
+    <div class="doc-content prose">
 
-        <section class="doc-section" id="your-files">
-          <h2>Your files stay on your PC</h2>
-          <p>Desktop Organizer reads, categorizes, moves and indexes the folders you explicitly allow it to watch.
-            Those operations happen locally, on your machine, using a local engine that listens on
-            <code>127.0.0.1</code> only.</p>
-          <ul>
-            <li>No file content is uploaded to any server controlled by the project.</li>
-            <li>No remote backup, sync or “companion cloud” exists — there is no account to create.</li>
-            <li>File contents are not read into memory for analysis beyond size, hash, timestamps and extension, which
-              is what duplicate detection and categorization need.</li>
-            <li>Removing the app leaves your files exactly where the app put them.</li>
-          </ul>
-          <div class="callout callout-ok">
-            <h3>We do not sell user data</h3>
-            <p>Desktop Organizer does not sell, rent, trade, broker or share personal data or file metadata with
-              advertisers, data brokers or any third party. There is no such dataset to share.</p>
-          </div>
-        </section>
+      <section class="doc-section" id="your-files-stay-local">
+        <h2>Your files stay on your PC</h2>
+        <p>
+          Desktop Organizer performs every file operation on the computer it is installed on. An Electron shell presents the interface and a local Python engine does
+          the work; the engine's HTTP API binds to <code>127.0.0.1</code> only, so it can be reached by the interface on the same machine and by nothing else. There is
+          no server operated by us, no account to log in to, and no queue your files pass through on the way to somewhere else.
+        </p>
+        <h3>What the engine does with your files</h3>
+        <p>
+          It works on the folders you enable — Desktop, Downloads, Documents, Pictures, Videos and Music, plus up to twelve custom folders — and sorts files into
+          Documents, Images, Videos, Music, Archives, Code, Installers and Others, optionally routing them into a central <code>OrganizerLibrary</code> folder. Every
+          one of those movements happens on your disk:
+        </p>
+        <ul>
+          <li><strong>Sorting</strong> reads file names and extensions to decide a destination. The destination is a folder on your machine.</li>
+          <li><strong>Duplicate detection</strong> compares file contents in chunks so large files can be matched without loading them whole. The comparison runs locally and the result is shown to you on screen.</li>
+          <li><strong>Cleanup</strong> moves files you confirm into the Recycle Bin. The app does not permanently delete your files, and a recycled file stays on your disk until you empty the bin or Windows reclaims the space.</li>
+          <li><strong>Organization History</strong> records which file moved from where to which folder in each run, with undo, so the trail is a local entry you can review and reverse.</li>
+        </ul>
+        <h3>Files that are never touched</h3>
+        <p>
+          Downloads in progress are protected. The engine ignores <code>.crdownload</code>, <code>.partial</code>, <code>.part</code>, <code>.download</code>, <code>.opdownload</code>
+          and <code>.tmp</code>, and waits out a configurable file stabilization delay (2 seconds by default) and download completion delay (10 seconds by default) before filing
+          anything. Nothing is uploaded while it waits, and no file is read into memory for transport anywhere.
+        </p>
+      </section>
 
-        <section class="doc-section" id="what-is-stored">
-          <h2>What the app stores locally</h2>
-          <p>All state lives in the app's data folder inside your Windows user profile:</p>
-          <ul>
-            <li><strong>Settings</strong> — watched folders, delays, conflict strategy, theme, startup and
-              notification preferences.</li>
-            <li><strong>Organization history</strong> — each run with the original and destination path for every file,
-              which is what makes Undo possible.</li>
-            <li><strong>Scan results</strong> — duplicate groups, large-file listings and the Downloads ignored list,
-              until you rescan.</li>
-            <li><strong>Logs</strong> — monitoring and error logs used for the in-app diagnostics view.</li>
-            <li><strong>Assistant conversation</strong> — chat text you type and the replies you receive, kept locally
-              if you use the assistant.</li>
-          </ul>
-          <p>None of it leaves the machine, and all of it is deleted when you delete the app data folder. Uninstalling
-            does not wipe your files or your library.</p>
-        </section>
+      <section class="doc-section" id="what-the-app-stores">
+        <h2>What the app stores locally</h2>
+        <p>
+          The app writes its working data into the app data folder inside your Windows user profile, alongside your documents rather than on a remote system. That
+          folder holds your settings (enabled folders, category routing, the custom folder list, monitoring delays, theme choices and AI provider profiles), a SQLite
+          database holding the history entries and chat records the interface reads, the Organization History record that makes undo possible, the chat history of the
+          AI workspace with its titles, pins and archives, and plain-text diagnostic logs written by the local engine.
+        </p>
+        <h3>None of it is transmitted to us</h3>
+        <p>
+          We do not receive your settings, your database, your history, your chats or your logs. If you choose to attach a log or a screenshot when reporting a
+          problem, that is your decision and your action, taken through GitHub; the app never sends an attachment anywhere on its own.
+        </p>
+        <h3>Your data, your copy</h3>
+        <p>
+          Because the records live in your user profile, you control them directly: delete individual chats from the sidebar, clear history entries, or remove the
+          app data folder altogether. Uninstalling through Settings &gt; Apps &gt; Installed apps removes the program, and the data folder is yours to keep or delete;
+          v1.0.2 fixed a defect in how uninstall handled retained app data, so removal now behaves as documented here. There is no remote copy for you to ask us to erase.
+        </p>
+        <div class="callout callout-warn">
+          <h3>Shared and managed computers</h3>
+          <p>
+            App data sits in the profile of the Windows account that installed the app. Anyone with access to that account, including software running under it, can
+            read the stored settings, history, chats, logs and keys. On a domain-managed work machine, assume your administrators can reach it too. If that matters
+            to you, use a local model profile and delete the app data folder when you finish.
+          </p>
+        </div>
+      </section>
 
-        <section class="doc-section" id="cloud">
-          <h2>No hidden cloud uploads</h2>
-          <p>The application makes no background network calls. It does not phone home for activation, licence checks
-            or update pings; updates are something you download yourself from the GitHub release page.</p>
-          <p>The one exception is entirely user-initiated and visible: if you configure the AI assistant with a remote
-            provider, requests to that provider go over the network. Everything else works fully offline.</p>
-        </section>
+      <section class="doc-section" id="no-hidden-cloud-uploads">
+        <h2>No hidden cloud uploads</h2>
+        <p>
+          Stated plainly: the app does not upload anything to us. No file contents, no file names, no folder paths, no inventory of what you own, no screenshots, no
+          clipboard contents, no machine identifiers. There is no background sync service, no "help us improve" channel, no silent crash bundle and no activation
+          ping. The only outbound traffic the program produces is traffic you start yourself: the AI provider in your active profile, which receives the prompt text
+          you send, and your own browser fetching an installer from GitHub.
+        </p>
+        <p>
+          Everything else — monitoring, sorting, duplicate detection, undo, history, recycle, the <code>Ctrl</code> + <code>K</code> command palette and the tray
+          menu — runs with no network involvement. Install the app, disconnect from the internet, and the file engine behaves identically.
+        </p>
+        <div class="callout callout-ok">
+          <h3>We do not sell user data</h3>
+          <p>
+            We do not sell, rent, trade, licence, broker or otherwise disclose your files, your file names, your folder structure, your history, your chats, your API
+            keys or any other information produced by the app. There is no data-advertising business behind this project, no server holding your data and no partner
+            list to publish. The code is MIT licensed and auditable in the open:
+            <a href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">the source repository</a>.
+          </p>
+        </div>
+      </section>
 
-        <section class="doc-section" id="ai">
-          <h2>AI settings and prompts</h2>
-          <p>Assistant configuration — endpoint URL, model name, API key, permission level — is stored locally in your
-            own app settings. Desktop Organizer has no server that receives those values.</p>
-          <ul>
-            <li>The assistant is off until you configure a provider, and it keeps provider-neutral behaviour: your
-              prompt goes only to the endpoint you entered.</li>
-            <li>Payloads contain the request text you typed plus the file names the action needs. File
-              <em>contents</em> are not attached unless you explicitly include them.</li>
-            <li>Point the assistant at a local model server and no prompt leaves the machine at all.</li>
-            <li>Deleting or resetting the model settings on the assistant page clears what the app stored.</li>
-          </ul>
-          <div class="callout callout-info">
-            <h3>Third-party providers</h3>
-            <p>If you choose an external provider, that provider's own privacy terms apply to the text you send it.
-              Review them before pasting anything sensitive.</p>
-          </div>
-        </section>
+      <section class="doc-section" id="api-keys-and-profiles">
+        <h2>API keys and provider profiles</h2>
+        <p>
+          To use the AI workspace with a hosted provider you supply your own key. That key, with the profile it belongs to — provider name, base URL, model choice —
+          is written to the app data folder on your machine and nowhere else. It is not sent to us, not included in any diagnostic bundle, and not uploaded for backup
+          or sync. The only place a key is ever transmitted is the provider endpoint you configured, in the header that provider requires to authenticate you.
+        </p>
+        <h3>No bundled credentials</h3>
+        <p>
+          The installer ships with no keys, no demo tokens, no shared account and no trial provider. A fresh install cannot make an AI call until you add a profile
+          yourself, so nobody else's usage is attributed to your machine and your usage is never billed to someone else. Profiles for OpenRouter, OpenAI, Google AI
+          Studio, Anthropic, LM Studio, Ollama or a custom OpenAI-compatible endpoint live on your machine only: switching between them sends neither your chats nor
+          your other keys anywhere, and switching never loses a conversation.
+        </p>
+        <h3>Handling your key well</h3>
+        <ul>
+          <li>Give a key the narrowest permission set your provider allows, and revoke it when you stop using the app.</li>
+          <li>Do not share your app data folder, and do not paste its contents into a bug report.</li>
+          <li>Prefer a per-application key so that usage and spend stay attributable.</li>
+          <li>On a machine you do not fully control, use LM Studio or Ollama instead of a hosted provider.</li>
+        </ul>
+        <div class="callout callout-warn">
+          <h3>Backups and disk imaging</h3>
+          <p>
+            Because keys are stored in your app data folder, anything that copies your user profile — a backup tool, a disk image, file-history software, a roaming
+            profile — copies them too. That is a consequence of keeping your data local rather than on our servers, and it is worth knowing before you archive a
+            machine.
+          </p>
+        </div>
+      </section>
 
-        <section class="doc-section" id="telemetry">
-          <h2>Telemetry</h2>
-          <p>There is no telemetry. Desktop Organizer collects no usage analytics, crash reports, install counts or
-            device identifiers, and it contains no analytics SDK.</p>
-          <p>Because of that there is also nothing to opt out of. If a future build ever adds optional diagnostics —
-            for example a “share diagnostics with the maintainer” switch — this page will state it explicitly, and it
-            will be off by default.</p>
-        </section>
+      <section class="doc-section" id="ai-prompts-and-providers">
+        <h2>AI prompts and third-party providers</h2>
+        <p>
+          The AI workspace is a chat interface plus a set of actions over your files. When you send a message, the prompt text goes to the provider in your active
+          profile. File contents are included only if you attach them yourself; the app does not silently package up your folders to give the model context. Whatever
+          a provider receives is governed by that provider's own privacy policy and your agreement with it, not by this one.
+        </p>
+        <h3>Local models keep everything on the machine</h3>
+        <p>
+          An LM Studio or Ollama profile routes requests to a model running on your own computer, and with those profiles no prompt text, no attachment and no file
+          content leaves the machine — the closest thing this app has to a strictly private AI mode. A custom OpenAI-compatible endpoint sits in between: what leaves
+          your machine goes to the base URL you typed in, which may be a company gateway, a self-hosted server or a reseller. Check that URL first.
+        </p>
+        <h3>Actions the assistant can take</h3>
+        <p>Assistant actions are grouped into four safety classes, so you can see at a glance how much a suggestion is allowed to do:</p>
+        <ul>
+          <li><strong>Read only.</strong> Inspects information; changes nothing.</li>
+          <li><strong>Launches something.</strong> Starts a program or opens a location.</li>
+          <li><strong>Changes files.</strong> Renames, moves or organises on your disk.</li>
+          <li><strong>Deletes files.</strong> Requires your explicit confirmation, and routes to the Recycle Bin rather than removing data outright.</li>
+        </ul>
+        <div class="callout callout-info">
+          <h3>Third-party providers are not us</h3>
+          <p>
+            OpenRouter, OpenAI, Google AI Studio, Anthropic, LM Studio, Ollama and any custom endpoint are independent services run by other parties, and their
+            retention, logging and training use sit outside our control. Read each provider's terms and privacy notice before putting work documents, personal
+            information, client material or credentials into a prompt or an attachment. We do not receive your prompts, your attachments, your completions or your
+            usage records.
+          </p>
+        </div>
+      </section>
 
-        <section class="doc-section" id="website">
-          <h2>This website</h2>
-          <p>The landing page is a static site hosted on GitHub Pages. It sets no cookies, contains no tracking
-            scripts and runs no analytics.</p>
-          <ul>
-            <li>The page loads its web fonts from the Google Fonts CDN, which means your IP address is visible to that
-              service when the page renders — standard for any site using hosted fonts.</li>
-            <li>Installer downloads are served by GitHub's release asset storage, whose operator keeps ordinary server
-              access logs.</li>
-            <li>Links to GitHub, the issue tracker and releases take you to pages governed by GitHub's own privacy
-              policy.</li>
-          </ul>
-        </section>
+      <section class="doc-section" id="telemetry">
+        <h2>Telemetry</h2>
+        <p>
+          Desktop Organizer collects no telemetry. There is no analytics SDK, no crash reporting, no usage tracking, no feature counters, no session identifier, no
+          device identifier and no installation identifier in the product. We cannot tell how many people run the app, how often a folder is organised, which provider
+          someone picked or whether a run succeeded, and nothing in the codebase is built to find out.
+        </p>
+        <ul>
+          <li>No metrics or analytics library is shipped in the installer.</li>
+          <li>No automatic crash dump is uploaded; diagnostic logs stay in your app data folder.</li>
+          <li>No phone-home on install, first launch, update or window close.</li>
+          <li>No tracking of which folders you watch or which files you sort.</li>
+        </ul>
+        <h3>What that costs, and what it buys</h3>
+        <p>
+          The honest trade is that problems reach us only when you choose to describe them, so GitHub issues and your own reading of the log folder are how quality is
+          maintained. In return, nothing about your habits accumulates on a server, and a network capture of the app at work shows no calls to us. If telemetry were
+          ever added — there is no plan to add it — this page would have to change first, and the feature would have to be documented and visible rather than silent.
+        </p>
+      </section>
 
-        <section class="doc-section" id="children">
-          <h2>Children's privacy</h2>
-          <p>Desktop Organizer is a general-purpose utility for adults, collects no personal information from anyone,
-            and is not directed at children under 13.</p>
-        </section>
+      <section class="doc-section" id="this-website">
+        <h2>This website</h2>
+        <p>
+          This site is a static set of HTML files served by GitHub Pages. It sets no cookies, runs no analytics, embeds no tracking or advertising scripts, stores
+          nothing in your browser, and offers no form to fill in and no account to create. Two ordinary parts of the modern web still see a visitor's connection, and
+          it is fair to name them.
+        </p>
+        <ul>
+          <li>
+            <strong>Web fonts.</strong> The page requests its fonts from the Google Fonts CDN, so that CDN's operator sees the IP address making the request along
+            with the standard data of an ordinary asset fetch. The site needs a network connection for its fonts and falls back to a system font when it has none.
+          </li>
+          <li>
+            <strong>Installer downloads.</strong> The setup file is served from GitHub's release asset storage, and GitHub keeps ordinary server logs for those
+            requests. We do not receive your IP address from a download and cannot see who downloaded the app.
+          </li>
+        </ul>
+        <div class="callout callout-info">
+          <h3>No consent banner, because there is nothing to consent to</h3>
+          <p>
+            Beyond the two items above this page is a document, written for you to read rather than to measure you, and the behaviour of the product does not change
+            depending on how you arrived here. A cookie notice on a site this simple would be theatre, so the facts are disclosed here instead of behind a popup.
+          </p>
+        </div>
+      </section>
 
-        <section class="doc-section" id="changes">
-          <h2>Changes and contact</h2>
-          <p>Changes to this policy are published on this page with an updated “last updated” stamp, alongside the
-            release that introduced them. Questions, corrections or requests about anything described here can be
-            opened as an issue on
-            <a href="https://github.com/iifamily409-rgb/Desktop-Organizer/issues" target="_blank" rel="noopener">GitHub</a>
-            or sent to the maintainer's GitHub profile.</p>
-          <div class="page-links">
-            <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download for Windows</a>
-            <a class="btn btn-secondary btn-lg" href="./terms-of-use.html">Terms of Use</a>
-            <a class="btn btn-ghost btn-lg" href="./documentation.html">Documentation</a>
-          </div>
-        </section>
+      <section class="doc-section" id="childrens-privacy">
+        <h2>Children's privacy</h2>
+        <p>
+          Desktop Organizer is a desktop file utility aimed at adults working on Windows 10 or 11. It is not directed at children, we do not market it to children,
+          and we do not knowingly collect personal information from a child through the app or this website. Because the app needs no account and gathers no
+          telemetry, it never asks for a name, an age, an email address or a birthday.
+        </p>
+        <p>
+          Two practical notes for a household that shares a computer. The AI workspace can be pointed at hosted providers whose own terms set minimum ages and content
+          rules, and a minor using such a provider is dealing with that provider, so profiles should be configured by an adult or set to a local model. Everything
+          the app records — history, chats, logs, keys — is readable by anyone signed in to that Windows account, which is worth thinking about before installing on
+          a family machine. If you believe a child's information has reached us through a bug report or a message on the repository, contact us through
+          <a href="https://github.com/iifamily409-rgb/Desktop-Organizer/issues" target="_blank" rel="noopener">GitHub issues</a> and say so plainly; we will remove it.
+        </p>
+      </section>
 
-      </div>
+      <section class="doc-section" id="changes-and-contact">
+        <h2>Changes and contact</h2>
+        <p>
+          This policy lives with the repository, and the version date in the banner above is the reference point for what applied while you used a given build.
+          Material changes — a new outbound destination, a new category of stored data, the introduction of anything resembling telemetry — are published here before
+          the release that depends on them ships, with a note in the <a href="./index.html#changelog">changelog</a>. Continuing to use the app after a change is
+          published means the updated policy is the one in force. Three commitments will not change quietly: file operations stay local and no file content is
+          uploaded to us; API keys stay in your app data folder and reach only your chosen provider; and we do not sell user data.
+        </p>
+        <h3>Contact</h3>
+        <p>
+          Desktop Organizer is maintained by Ahmed-Coder under the MIT licence. The fastest route to a human is the repository: open an issue for a defect or a
+          privacy question, or read the source before trusting it. Installer files, if you want to verify a build against this policy, are on the
+          <a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases" target="_blank" rel="noopener">releases page</a>. The
+          <a href="./documentation.html">documentation</a> explains how the engine and the AI workspace are wired, and the
+          <a href="./terms-of-use.html">terms of use</a> set out the licence and the limits of responsibility.
+        </p>
+        <div class="page-links">
+          <a class="btn btn-primary btn-lg" href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download for Windows</a>
+          <a class="btn btn-secondary" href="./terms-of-use.html">Terms of use</a>
+          <a class="btn btn-secondary" href="./documentation.html">Documentation</a>
+        </div>
+      </section>
+
     </div>
-  </section>
+  </div>
+</section>
 
 </main>
 
@@ -232,13 +419,14 @@
         <span class="brand-text"><span class="brand-name">Desktop Organizer</span></span>
       </a>
       <p>A modern Windows desktop organizer that keeps files categorized, duplicates cleaned, and your workspace calm.</p>
-      <p class="developer">Developer: <a href="https://github.com/iifamily409-rgb" target="_blank" rel="noopener">Suleman Alam</a></p>
+      <p class="developer">Built by <a href="https://github.com/iifamily409-rgb" target="_blank" rel="noopener">Ahmed-Coder</a></p>
     </div>
 
     <nav class="footer-col" aria-label="Product">
       <h4>Product</h4>
       <ul>
         <li><a href="./index.html#features">Features</a></li>
+        <li><a href="./index.html#copilot">Copilot</a></li>
         <li><a href="./index.html#screenshots">Screenshots</a></li>
         <li><a href="./index.html#how-it-works">How it works</a></li>
       </ul>
@@ -248,7 +436,7 @@
       <h4>Resources</h4>
       <ul>
         <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.1/Desktop-Organizer-Setup-v1.0.1.exe" download="Desktop-Organizer-Setup-v1.0.1.exe">Download</a></li>
+        <li><a href="https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe" download="Desktop-Organizer-Setup-v1.0.2.exe">Download</a></li>
         <li><a href="./index.html#changelog">Release Notes</a></li>
         <li><a href="./documentation.html">Documentation</a></li>
       </ul>
@@ -279,10 +467,45 @@
   </div>
 </footer>
 
+<div class="mascot" id="mascot" role="img" aria-label="Desktop Organizer copilot mascot">
+  <p class="mascot-bubble" data-mascot-bubble aria-live="polite"></p>
+  <div class="mascot-stage" data-mascot-stage>
+    <div class="mascot-shell" data-mascot-shell>
+      <span class="mascot-ring" aria-hidden="true"></span>
+      <span class="mascot-ring b" aria-hidden="true"></span>
+      <span class="mascot-antenna" aria-hidden="true"></span>
+      <div class="mascot-core" aria-hidden="true">
+        <div class="mascot-face">
+          <span class="mascot-eye" data-mascot-eye></span>
+          <span class="mascot-eye" data-mascot-eye></span>
+        </div>
+      </div>
+      <span class="mascot-shadow" aria-hidden="true"></span>
+    </div>
+  </div>
+</div>
+
+<div class="palette" id="palette" role="dialog" aria-modal="true" aria-label="Website command palette" hidden>
+  <div class="pal-panel">
+    <div class="pal-search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+      <input class="pal-input" id="paletteInput" type="text" placeholder="Type a command or search the site…" autocomplete="off" spellcheck="false" aria-label="Search commands">
+      <span class="kbd">Esc</span>
+    </div>
+    <div class="pal-list" id="paletteList" role="listbox" aria-label="Commands"></div>
+    <div class="pal-foot">
+      <span><span class="kbd">&uarr;</span><span class="kbd">&darr;</span> navigate</span>
+      <span><span class="kbd">Enter</span> run</span>
+      <span><span class="kbd">Ctrl</span><span class="kbd">K</span> toggle</span>
+    </div>
+  </div>
+</div>
+
 <button class="to-top" id="toTop" type="button" aria-label="Back to top">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5.5 11.5 6.5-6.5 6.5 6.5"/></svg>
 </button>
 
 <script src="./script.js" defer></script>
+<script src="./mascot.js" defer></script>
 </body>
 </html>

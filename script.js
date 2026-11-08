@@ -290,3 +290,407 @@
   window.addEventListener("resize", onScroll);
   onScroll();
 })();
+
+/* ==========================================================================
+   Theme system — light / dark / system, persisted
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  var KEY = "do-theme";
+  var html = document.documentElement;
+  var media = window.matchMedia("(prefers-color-scheme: light)");
+
+  function stored() {
+    try { return window.localStorage.getItem(KEY); } catch (e) { return null; }
+  }
+
+  function resolve(preference) {
+    if (preference === "light" || preference === "dark") return preference;
+    return media.matches ? "light" : "dark";
+  }
+
+  function paint(preference) {
+    html.setAttribute("data-theme-choice", preference);
+    html.setAttribute("data-theme", resolve(preference));
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", resolve(preference) === "light" ? "#f4f6fd" : "#06070d");
+    Array.prototype.forEach.call(document.querySelectorAll("[data-theme-btn]"), function (btn) {
+      btn.classList.toggle("is-active", btn.getAttribute("data-theme-btn") === preference);
+      btn.setAttribute("aria-pressed", String(btn.getAttribute("data-theme-btn") === preference));
+    });
+  }
+
+  function set(preference) {
+    try { window.localStorage.setItem(KEY, preference); } catch (e) {}
+    paint(preference);
+  }
+
+  paint(stored() || "system");
+  media.addEventListener("change", function () {
+    if ((stored() || "system") === "system") paint("system");
+  });
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest ? e.target.closest("[data-theme-btn]") : null;
+    if (!btn) return;
+    e.preventDefault();
+    set(btn.getAttribute("data-theme-btn"));
+    if (window.DOmascot) window.DOmascot.say(btn.textContent.trim() + " theme on", 2400);
+  });
+
+  window.DOtheme = {
+    cycle: function () {
+      var order = ["system", "light", "dark"];
+      var next = order[(order.indexOf(stored() || "system") + 1) % order.length];
+      set(next);
+      return next;
+    }
+  };
+})();
+
+/* ==========================================================================
+   Cursor glow, particles, parallax, magnetic buttons
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  /* ---------- Mouse-follow glow ---------- */
+  var glow = document.getElementById("fxGlow");
+  var gx = window.innerWidth / 2;
+  var gy = window.innerHeight / 3;
+  var tx = gx, ty = gy, gRun = false;
+
+  function glide() {
+    if (document.hidden) { gRun = false; return; }
+    gx += (tx - gx) * 0.09;
+    gy += (ty - gy) * 0.09;
+    glow.style.transform = "translate3d(" + (gx - 320).toFixed(1) + "px," + (gy - 320).toFixed(1) + "px,0)";
+    window.requestAnimationFrame(glide);
+  }
+
+  if (glow && fine && !reduceMotion) {
+    window.addEventListener("pointermove", function (e) {
+      tx = e.clientX;
+      ty = e.clientY;
+      if (!gRun) { gRun = true; window.requestAnimationFrame(glide); }
+    }, { passive: true });
+  }
+
+  /* ---------- Floating particles ---------- */
+  var canvas = document.getElementById("fxParticles");
+  if (canvas && !reduceMotion) {
+    var ctx = canvas.getContext("2d");
+    var dots = [];
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var W = 0, H = 0, raf = null;
+
+    function count() { return window.innerWidth < 700 ? 14 : window.innerWidth < 1200 ? 26 : 40; }
+
+    function size() {
+      W = canvas.clientWidth;
+      H = canvas.clientHeight;
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function seed() {
+      dots = [];
+      for (var i = 0; i < count(); i += 1) {
+        dots.push({
+          x: Math.random() * W, y: Math.random() * H,
+          r: 0.7 + Math.random() * 1.9,
+          vx: (Math.random() - 0.5) * 0.16,
+          vy: -0.06 - Math.random() * 0.2,
+          a: 0.14 + Math.random() * 0.34,
+          hue: Math.random() < 0.5 ? "109,124,255" : "34,211,238"
+        });
+      }
+    }
+
+    function frame() {
+      ctx.clearRect(0, 0, W, H);
+      for (var i = 0; i < dots.length; i += 1) {
+        var d = dots[i];
+        d.x += d.vx;
+        d.y += d.vy;
+        if (d.y < -12) { d.y = H + 8; d.x = Math.random() * W; }
+        if (d.x < -12) d.x = W + 8;
+        if (d.x > W + 12) d.x = -8;
+        ctx.beginPath();
+        ctx.arc(d.x, d.y, d.r, 0, 6.2832);
+        ctx.fillStyle = "rgba(" + d.hue + "," + d.a + ")";
+        ctx.fill();
+      }
+      raf = window.requestAnimationFrame(frame);
+    }
+
+    function play() { if (!raf) raf = window.requestAnimationFrame(frame); }
+    function pause() { if (raf) { window.cancelAnimationFrame(raf); raf = null; } }
+
+    size(); seed(); play();
+    window.addEventListener("resize", function () { size(); seed(); }, { passive: true });
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) pause(); else play();
+    });
+  }
+
+  /* ---------- Parallax drift ---------- */
+  var layers = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+  if (layers.length && !reduceMotion) {
+    var pRaf = false;
+
+    function drift() {
+      pRaf = false;
+      var vh = window.innerHeight || 1;
+      for (var i = 0; i < layers.length; i += 1) {
+        var el = layers[i];
+        var speed = parseFloat(el.getAttribute("data-parallax")) || 0.08;
+        var rect = el.getBoundingClientRect();
+        var offset = (rect.top + rect.height / 2 - vh / 2) * -speed;
+        el.style.setProperty("--py", offset.toFixed(1) + "px");
+      }
+    }
+
+    window.addEventListener("scroll", function () {
+      if (!pRaf) { pRaf = true; window.requestAnimationFrame(drift); }
+    }, { passive: true });
+    drift();
+  }
+
+  /* ---------- Magnetic buttons ---------- */
+  if (fine && !reduceMotion) {
+    Array.prototype.forEach.call(document.querySelectorAll(".btn-primary, [data-magnetic]"), function (el) {
+      var strength = el.hasAttribute("data-magnetic")
+        ? parseFloat(el.getAttribute("data-magnetic")) || 8
+        : 6;
+
+      el.addEventListener("pointermove", function (e) {
+        var r = el.getBoundingClientRect();
+        var dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+        var dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+        el.style.transform = "translate(" + (dx * strength).toFixed(2) + "px," + (dy * strength * 0.7).toFixed(2) + "px)";
+      });
+      el.addEventListener("pointerleave", function () { el.style.transform = ""; });
+    });
+  }
+})();
+
+/* ==========================================================================
+   Website command palette — Ctrl / Cmd + K
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  var ASSET = "https://github.com/iifamily409-rgb/Desktop-Organizer/releases/download/v1.0.2/Desktop-Organizer-Setup-v1.0.2.exe";
+  var REPO = "https://github.com/iifamily409-rgb/Desktop-Organizer";
+
+  function go(hash) {
+    var el = document.querySelector(hash);
+    if (!el) { location.href = "./index.html" + hash; return; }
+    var header = document.getElementById("siteHeader");
+    var top = el.getBoundingClientRect().top + window.pageYOffset - ((header ? header.offsetHeight : 72) + 10);
+    window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+  }
+
+  function open(url) { window.open(url, "_blank", "noopener"); }
+
+  function download(url, name) {
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+    a.rel = "noopener";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    if (window.DOmascot) window.DOmascot.say("Starting the v1.0.2 download", 3200);
+  }
+
+  var ITEMS = [
+    { group: "Actions", label: "Download Desktop Organizer v1.0.2", hint: "installer setup", run: function () { download(ASSET, "Desktop-Organizer-Setup-v1.0.2.exe"); } },
+    { group: "Actions", label: "Toggle light / dark / system theme", hint: "appearance mode", run: function () {
+      var next = window.DOtheme ? window.DOtheme.cycle() : "system";
+      if (window.DOmascot) window.DOmascot.say(next + " theme", 2400);
+    } },
+    { group: "Actions", label: "Show the copilot mascot", hint: "ahmed hidden", run: function () {
+      if (window.DOmascot) window.DOmascot.reveal();
+    } },
+    { group: "Jump to", label: "Meet Desktop Copilot", hint: "ai assistant", run: function () { go("#copilot"); } },
+    { group: "Jump to", label: "Organize Desktop", hint: "demo folders", run: function () { go("#how-it-works"); } },
+    { group: "Jump to", label: "Open Downloads", hint: "demo folders", run: function () { go("#copilot"); } },
+    { group: "Jump to", label: "Find Duplicates", hint: "demo cleanup space", run: function () { go("#features"); } },
+    { group: "Jump to", label: "Switch Provider", hint: "profiles models", run: function () { go("#providers"); } },
+    { group: "Jump to", label: "New Chat", hint: "assistant", run: function () { go("#copilot"); } },
+    { group: "Jump to", label: "Open Settings", hint: "configure", run: function () { go("#faq"); } },
+    { group: "Jump to", label: "Download section", hint: "get windows", run: function () { go("#download"); } },
+    { group: "Jump to", label: "Changelog", hint: "release notes", run: function () { go("#changelog"); } },
+    { group: "Jump to", label: "Live metrics", hint: "numbers counters", run: function () { go("#metrics"); } },
+    { group: "Jump to", label: "Trust and privacy", hint: "local first", run: function () { go("#trust"); } },
+    { group: "Pages", label: "Documentation", hint: "help guide", run: function () { location.href = "./documentation.html"; } },
+    { group: "Pages", label: "Command palette guide", hint: "ctrl k keyboard", run: function () { location.href = "./documentation.html#command-palette"; } },
+    { group: "Pages", label: "Provider profiles guide", hint: "openrouter ollama", run: function () { location.href = "./documentation.html#provider-profiles"; } },
+    { group: "Pages", label: "Privacy Policy", hint: "data local", run: function () { location.href = "./privacy-policy.html"; } },
+    { group: "Pages", label: "Terms of Use", hint: "legal licence", run: function () { location.href = "./terms-of-use.html"; } },
+    { group: "Pages", label: "Known issues", hint: "smartscreen signing", run: function () { location.href = "./known-issues.html"; } },
+    { group: "External", label: "GitHub repository", hint: "source code", run: function () { open(REPO); } },
+    { group: "External", label: "Release notes v1.0.2", hint: "github tag", run: function () { open(REPO + "/releases/tag/v1.0.2"); } },
+    { group: "External", label: "Report an issue", hint: "bug", run: function () { open(REPO + "/issues"); } }
+  ];
+
+  var overlay = document.getElementById("palette");
+  var input = document.getElementById("paletteInput");
+  var list = document.getElementById("paletteList");
+  var trigger = document.getElementById("paletteTrigger");
+  if (!overlay || !input || !list) return;
+
+  var rows = [];
+  var active = 0;
+  var lastFocus = null;
+
+  function items() { return list.querySelectorAll(".pal-item"); }
+
+  function mark(i) {
+    active = i;
+    Array.prototype.forEach.call(items(), function (el, idx) {
+      el.classList.toggle("is-active", idx === i);
+      if (idx === i && el.scrollIntoView) el.scrollIntoView({ block: "nearest" });
+    });
+  }
+
+  function move(step) {
+    if (!rows.length) return;
+    mark((active + step + rows.length) % rows.length);
+  }
+
+  function render(query) {
+    var words = (query || "").toLowerCase().trim().split(/\s+/).filter(Boolean);
+    rows = ITEMS.filter(function (item) {
+      if (!words.length) return true;
+      var hay = (item.label + " " + item.group + " " + item.hint).toLowerCase();
+      return words.every(function (w) { return hay.indexOf(w) > -1; });
+    });
+    active = 0;
+    list.innerHTML = "";
+
+    if (!rows.length) {
+      var empty = document.createElement("p");
+      empty.className = "pal-empty";
+      empty.textContent = "Nothing matches \u201C" + query + "\u201D \u2014 try \u201Cdownload\u201D, \u201Ctheme\u201D or \u201Cdocs\u201D.";
+      list.appendChild(empty);
+      return;
+    }
+
+    var group = "";
+    rows.forEach(function (item) {
+      if (item.group !== group) {
+        group = item.group;
+        var head = document.createElement("p");
+        head.className = "pal-group";
+        head.textContent = group;
+        list.appendChild(head);
+      }
+      var li = document.createElement("button");
+      li.type = "button";
+      li.className = "pal-item";
+      li.setAttribute("role", "option");
+      var label = document.createElement("span");
+      label.className = "pal-label";
+      label.textContent = item.label;
+      var key = document.createElement("span");
+      key.className = "pal-key";
+      key.textContent = group;
+      li.appendChild(label);
+      li.appendChild(key);
+      li.addEventListener("click", function () { close(); item.run(); });
+      li.addEventListener("pointerenter", function () {
+        Array.prototype.forEach.call(items(), function (el, idx) {
+          el.classList.toggle("is-active", el === li);
+          active = idx;
+        });
+      });
+      list.appendChild(li);
+    });
+    mark(active);
+  }
+
+  function openPal() {
+    lastFocus = document.activeElement;
+    overlay.hidden = false;
+    document.body.classList.add("pal-open");
+    render("");
+    window.setTimeout(function () { input.focus(); input.select(); }, 20);
+    if (window.DOmascot) window.DOmascot.mood("think", 800);
+  }
+
+  function close() {
+    overlay.hidden = true;
+    document.body.classList.remove("pal-open");
+    input.value = "";
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  input.addEventListener("input", function () { render(input.value); });
+  overlay.addEventListener("click", function (e) { if (e.target === overlay) close(); });
+
+  document.addEventListener("keydown", function (e) {
+    var typing = /^(INPUT|TEXTAREA|SELECT)$/.test((e.target.tagName || "").toUpperCase());
+    var combo = (e.ctrlKey || e.metaKey) && (e.key || "").toLowerCase() === "k";
+
+    if (combo) {
+      e.preventDefault();
+      if (overlay.hidden) openPal(); else close();
+      return;
+    }
+    if (!overlay.hidden) {
+      if (e.key === "Escape") { e.preventDefault(); close(); return; }
+      if (e.key === "ArrowDown") { e.preventDefault(); move(1); return; }
+      if (e.key === "ArrowUp") { e.preventDefault(); move(-1); return; }
+      if (e.key === "Tab") { e.preventDefault(); move(e.shiftKey ? -1 : 1); return; }
+      if (e.key === "Enter") {
+        e.preventDefault();
+        var item = rows[active];
+        if (item) { close(); item.run(); }
+      }
+      return;
+    }
+    if (!typing && e.key === "/") { e.preventDefault(); openPal(); }
+  });
+
+  if (trigger) {
+    trigger.addEventListener("click", function (e) { e.preventDefault(); openPal(); });
+  }
+
+  /* ---------- Animated preview inside the showcase section ---------- */
+  var demo = document.getElementById("paletteDemo");
+  if (demo && "IntersectionObserver" in window) {
+    var demoTimer = null;
+    var demoIndex = 0;
+
+    function step() {
+      var list2 = demo.querySelectorAll("[data-demo-item]");
+      Array.prototype.forEach.call(list2, function (el) { el.classList.remove("is-active"); });
+      var current = list2[demoIndex % list2.length];
+      if (current) current.classList.add("is-active");
+      demoIndex += 1;
+    }
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      step();
+    } else {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            if (!demoTimer) { step(); demoTimer = window.setInterval(step, 1900); }
+          } else if (demoTimer) {
+            window.clearInterval(demoTimer);
+            demoTimer = null;
+          }
+        });
+      }, { threshold: 0.35 }).observe(demo);
+    }
+  }
+})();
